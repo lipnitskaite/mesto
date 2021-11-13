@@ -1,0 +1,6 @@
+.profile__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 26px 0 14px 0;
+}
