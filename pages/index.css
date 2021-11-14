@@ -23,6 +23,7 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__opened/popup__opened.css);
 
 /* Form Block */
 @import url(../blocks/form/form.css);
