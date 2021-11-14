@@ -1,0 +1,12 @@
+.form__submit {
+  width: 100%;
+  border: none;
+  padding: 14px 0;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  border-radius: 2px;
+}
