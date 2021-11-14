@@ -1,0 +1,7 @@
+.page__place {
+  margin-bottom: 20px;
+}
+
+.page__place:last-of-type {
+  margin-bottom: 0;
+}

@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
+
+/* Page Block */
 @import url(../blocks/page/page.css);
 
 /* Header Block */
@@ -26,3 +28,7 @@
 @import url(../blocks/place/__main/place__main.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__button/_like/place__button_like.css);
+
+/* Mix */
+@import url(../blocks/page/__place/page__place.css);
+@import url(../blocks/page/__places/page__places.css);
