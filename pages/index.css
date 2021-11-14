@@ -22,12 +22,16 @@
 /* Places Block */
 @import url(../blocks/places/places.css);
 
-/* Place Block */
+/* Places Block */
 @import url(../blocks/place/place.css);
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__main/place__main.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__button/_like/place__button_like.css);
+
+/* Footer Block */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 
 /* Mix */
 @import url(../blocks/page/__place/page__place.css);
