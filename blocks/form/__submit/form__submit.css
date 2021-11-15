@@ -10,3 +10,15 @@
   line-height: 1.21;
   border-radius: 2px;
 }
+
+@media screen and (min-width: 1280px) {
+  .form__submit {
+    font-size: 18px;
+    transition: opacity .4s;
+  }
+
+  .form__submit:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+}
