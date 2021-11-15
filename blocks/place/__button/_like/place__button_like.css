@@ -5,3 +5,10 @@
   width: 22px;
   height: 19px;
 }
+
+@media screen and (min-width: 1280px) {
+  .place__button_like:hover {
+    opacity: .5;
+    cursor: pointer;
+  }
+}

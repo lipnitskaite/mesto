@@ -1,3 +1,9 @@
 .page__places {
   margin-bottom: 48px;
 }
+
+@media screen and (min-width: 1280px) {
+  .page__places {
+    margin-bottom: 67px;
+  }
+}
