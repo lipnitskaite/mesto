@@ -15,6 +15,7 @@
     grid-area: button_add;
     width: 150px;
     align-self: center;
+    transition: opacity .4s;
   }
 
   .profile__add-button:hover {

@@ -6,6 +6,7 @@
   line-height: 1.21;
   width: 24px;
   height: 24px;
+  transition: opacity .4s;
 }
 
 @media screen and (min-width: 1280px) {

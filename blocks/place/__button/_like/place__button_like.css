@@ -4,6 +4,7 @@
   padding: 0;
   width: 22px;
   height: 19px;
+  transition: opacity .4s;
 }
 
 @media screen and (min-width: 1280px) {
