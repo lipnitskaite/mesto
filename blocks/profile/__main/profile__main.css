@@ -4,3 +4,12 @@
   justify-content: center;
   margin: 26px 0 14px 0;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .profile__main {
+    justify-self: flex-start;
+    align-self: flex-end;
+    grid-area: main;
+    margin: 0;
+  }
+}
