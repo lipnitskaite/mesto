@@ -1,7 +1,9 @@
-.profile__button_type_edit {
+.profile__edit-button {
   background-color: black;
   padding: 0;
   border: none;
   font-size: 27px;
   line-height: 1.21;
+  width: 24px;
+  height: 24px;
 }
