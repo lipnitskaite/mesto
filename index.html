@@ -6,120 +6,118 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
-<body>
-  <div class="page">
-    <header class="header">
-      <img src="./images/logo-mesto.svg" alt="Логотип 'Место'" class="logo">
-    </header>
+<body class="page">
+  <header class="header">
+    <img src="./images/logo-mesto.svg" alt="Логотип 'Место'" class="logo">
+  </header>
 
-    <main class="content">
-      <section class="profile">
-        <img src="./images/Avatar.jpg" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
-        <div class="profile__main">
-          <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
-          <button class="profile__edit-button">
-            <svg class="profile__edit-button_content" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="17" height="17" stroke="white"/>
-              <path d="M12.75 6.24621L7.20283 11.825L6.21226 10.8145L11.7453 5.25L12.75 6.24621ZM5.25 12.75L6.7217 12.3088L5.68868 11.3126L5.25 12.75Z" fill="white"/>
+  <main class="content">
+    <section class="profile">
+      <img src="./images/Avatar.jpg" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
+      <div class="profile__main">
+        <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
+        <button class="profile__edit-button">
+          <svg class="profile__edit-button profile__edit-button_content" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="17" height="17" stroke="white"/>
+            <path d="M12.75 6.24621L7.20283 11.825L6.21226 10.8145L11.7453 5.25L12.75 6.24621ZM5.25 12.75L6.7217 12.3088L5.68868 11.3126L5.25 12.75Z" fill="white"/>
+          </svg>
+        </button>
+      </div>
+      <p class="profile__subtitle">Исследователь океана</p>
+      <button class="profile__add-button">
+        <svg class="profile__add-button profile__add-button_content" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 7.11111H8.88889V0H7.11111V7.11111H0V8.88889H7.11111V16H8.88889V8.88889H16V7.11111Z" fill="white"/>
+        </svg>
+      </button>
+    </section>
+
+    <section class="popup">
+      <div class="popup__content">
+        <svg class="popup__close" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 18L12 10L20 2L18 0L10 8L2 0L0 2L8 10L0 18L2 20L10 12L18 20L20 18Z" fill="white"/>
+        </svg>
+        <form class="form">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <fieldset class="form__container">
+            <input class="form__item form__input" type="text" name="username" value="Жак-Ив Кусто">
+            <input class="form__item form__job" type="text" name="userdescription" value="Исследователь океана">
+          </fieldset>
+          <input class="form__submit" type="submit" name="submit" value="Сохранить">
+        </form>
+      </div>
+    </section>
+    <section class="places page__places">
+      <article class="place page__place">
+        <img src="./images/altai.jpg" alt="Сосновый лес на фоне заснеженных гор" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Алтайский&nbsp;край</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
             </svg>
           </button>
         </div>
-        <p class="profile__subtitle">Исследователь океана</p>
-        <button class="profile__add-button">
-          <svg class="profile__add-button_content" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 7.11111H8.88889V0H7.11111V7.11111H0V8.88889H7.11111V16H8.88889V8.88889H16V7.11111Z" fill="white"/>
-          </svg>
-        </button>
-      </section>
-
-      <section class="popup">
-        <div class="popup__content">
-          <svg class="popup__close" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 18L12 10L20 2L18 0L10 8L2 0L0 2L8 10L0 18L2 20L10 12L18 20L20 18Z" fill="white"/>
-          </svg>
-          <form class="form">
-            <h2 class="form__title">Редактировать профиль</h2>
-            <fieldset class="form__container">
-              <input class="form__item form__input" type="text" name="username" value="Жак-Ив Кусто">
-              <input class="form__item form__job" type="text" name="userdescription" value="Исследователь океана">
-            </fieldset>
-            <input class="form__submit" type="submit" name="submit" value="Сохранить">
-          </form>
+      </article>
+      <article class="place page__place">
+        <img src="./images/baikal-lake.jpg" alt="Машина на замерзшем озере на фоне холмистого берега" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Озеро&nbsp;Байкал</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
+            </svg>
+          </button>
         </div>
-      </section>
-      <section class="places page__places">
-        <article class="place page__place">
-          <img src="./images/altai.jpg" alt="Сосновый лес на фоне заснеженных гор" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Алтайский&nbsp;край</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-        <article class="place page__place">
-          <img src="./images/baikal-lake.jpg" alt="Машина на замерзшем озере на фоне холмистого берега" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Озеро&nbsp;Байкал</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-        <article class="place page__place">
-          <img src="./images/caucasus.jpg" alt="Летний вид на горы Кавказа" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Кавказ</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-        <article class="place page__place">
-          <img src="./images/elbrus-mountain.jpg" alt="Осенний вид на Эльбрус" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Гора&nbsp;Эльбрус</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-        <article class="place page__place">
-          <img src="./images/kamchatka.jpg" alt="Каменнистые горы посреди моря" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Камчатка</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-        <article class="place page__place">
-          <img src="./images/kurshskaya-kosa.jpg" alt="Деревянная дорога посреди песчаных дюн" class="place__image">
-          <div class="place__main">
-            <h2 class="place__title">Куршская&nbsp;Коса</h2>
-            <button class="place__button_like">
-              <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </article>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">&copy;&nbsp;2021&nbsp;Mesto&nbsp;Russia</p>
-    </footer>
-  </div>
+      </article>
+      <article class="place page__place">
+        <img src="./images/caucasus.jpg" alt="Летний вид на горы Кавказа" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Кавказ</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+      <article class="place page__place">
+        <img src="./images/elbrus-mountain.jpg" alt="Осенний вид на Эльбрус" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Гора&nbsp;Эльбрус</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+      <article class="place page__place">
+        <img src="./images/kamchatka.jpg" alt="Каменнистые горы посреди моря" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Камчатка</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+      <article class="place page__place">
+        <img src="./images/kurshskaya-kosa.jpg" alt="Деревянная дорога посреди песчаных дюн" class="place__image">
+        <div class="place__main">
+          <h2 class="place__title">Куршская&nbsp;Коса</h2>
+          <button class="place__like-button">
+            <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2991 9.78586C22.567 7.54338 22.567 3.90213 20.2991 1.68186C18.0311 -0.560619 14.3486 -0.560619 12.0806 1.68186L10.9804 2.792L9.88007 1.70406C7.61215 -0.560619 3.92957 -0.560619 1.6841 1.68186C0.583822 2.76979 0 4.21297 0 5.74496C0 7.27695 0.606277 8.72013 1.6841 9.80806L10.9804 19L20.2991 9.78586ZM1.4371 5.74496C1.4371 4.59042 1.8862 3.52469 2.71702 2.72539C3.5703 1.88168 4.67058 1.45983 5.77086 1.45983C6.87114 1.45983 7.97142 1.88168 8.8247 2.72539L10.9804 4.83465L13.136 2.70318C14.8201 1.03798 17.582 1.03798 19.2437 2.70318C20.0521 3.50248 20.5236 4.56821 20.5236 5.72276C20.5236 6.8773 20.0745 7.94303 19.2437 8.74233L10.9804 16.9351L2.71702 8.76453C1.90865 7.94303 1.4371 6.8773 1.4371 5.74496Z" fill="black"/>
+            </svg>
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy;&nbsp;2021&nbsp;Mesto&nbsp;Russia</p>
+  </footer>
 
   <script src="./scripts/index.js"></script>
 </body>
