@@ -5,7 +5,7 @@
   margin: 26px 0 14px 0;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .profile__main {
     justify-self: flex-start;
     align-self: flex-end;
