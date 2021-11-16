@@ -1,6 +1,6 @@
 .place {
-  min-width: 282px;
-  min-height: 361px;
+  width: 282px;
+  height: 361px;
   background-color: white;
   border-radius: 10px;
 }

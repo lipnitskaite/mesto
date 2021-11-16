@@ -3,11 +3,17 @@
   margin: 0 auto;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .places {
-    max-width: 880px;
+    max-width: 80%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     grid-gap: 20px 17px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .places {
+    max-width: 880px;
   }
 }

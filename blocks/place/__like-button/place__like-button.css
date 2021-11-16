@@ -1,4 +1,4 @@
-.place__button_like {
+.place__like-button {
   background: none;
   border: none;
   padding: 0;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .place__button_like:hover {
+  .place__like-button:hover {
     opacity: .5;
     cursor: pointer;
   }
