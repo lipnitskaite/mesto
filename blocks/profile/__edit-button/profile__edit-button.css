@@ -1,5 +1,9 @@
 .profile__edit-button {
-  align-self: flex-end;
+  background: url(../../../images/edit-button.svg) no-repeat center;
+  width: 18px;
+  height: 18px;
+  align-self: end;
+  margin-bottom: 5px;
   background-color: black;
   padding: 0;
   border: none;
@@ -9,6 +13,12 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .profile__edit-button {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+  }
+
   .profile__edit-button:hover {
     cursor: pointer;
     opacity: .6;

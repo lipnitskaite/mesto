@@ -1,4 +1,7 @@
 .popup__close {
+  background: url(../../../images/close-icon-mobile.svg) no-repeat center;
+  background-color: black;
+  border: none;
   width: 20px;
   height: 20px;
   position: absolute;
