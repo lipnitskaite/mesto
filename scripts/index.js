@@ -15,19 +15,21 @@ function close () {
 popupCloseButton.addEventListener('click', close);
 
 let formElement = document.querySelector('.form');
-let nameInput = document.querySelector('.form__input');
-let jobInput = document.querySelector('.form__job');
+let nameInput = document.querySelector('.form__item_type_name');
+let jobInput = document.querySelector('.form__item_type_job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
-let submit = document.querySelector('.form__submit');
+let submit = document.querySelector('.form__item_type_submit');
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
     
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
+
+  close();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-submit.addEventListener('click', close);
+// submit.addEventListener('click', close);
