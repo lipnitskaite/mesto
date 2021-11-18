@@ -1,10 +1,9 @@
 .profile__edit-button {
-  background: url(../../../images/edit-button.svg) no-repeat center;
+  background: black url(../../../images/edit-button.svg) no-repeat center;
   width: 18px;
   height: 18px;
   align-self: end;
   margin-bottom: 5px;
-  background-color: black;
   padding: 0;
   border: none;
   font-size: 27px;
