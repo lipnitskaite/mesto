@@ -6,7 +6,7 @@
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .page__place { 
     margin-bottom: 0;
   }

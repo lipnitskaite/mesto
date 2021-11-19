@@ -1,14 +1,14 @@
 .places {
   width: calc(100% - (19px*2));
   margin: 0 auto;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  justify-items: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .places {
     max-width: 80%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     grid-gap: 20px 17px;
   }
 }
