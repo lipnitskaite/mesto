@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./scripts/index.js" defer></script>
   <title>Место</title>
 </head>
 <body class="page">
@@ -22,50 +23,7 @@
       <button class="profile__add-button" type="button"></button>
     </section>
 
-    <section class="places page__places">
-      <article class="place page__place">
-        <img src="./images/altai.jpg" alt="Сосновый лес на фоне заснеженных гор" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Алтайский&nbsp;край</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-      <article class="place page__place">
-        <img src="./images/baikal-lake.jpg" alt="Машина на замерзшем озере на фоне холмистого берега" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Озеро&nbsp;Байкал</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-      <article class="place page__place">
-        <img src="./images/caucasus.jpg" alt="Летний вид на горы Кавказа" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Кавказ</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-      <article class="place page__place">
-        <img src="./images/elbrus-mountain.jpg" alt="Осенний вид на Эльбрус" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Гора&nbsp;Эльбрус</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-      <article class="place page__place">
-        <img src="./images/kamchatka.jpg" alt="Каменнистые горы посреди моря" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Камчатка</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-      <article class="place page__place">
-        <img src="./images/kurshskaya-kosa.jpg" alt="Деревянная дорога посреди песчаных дюн" class="place__image">
-        <div class="place__main">
-          <h2 class="place__title">Куршская&nbsp;Коса</h2>
-          <button class="place__like-button" type="button"></button>
-        </div>
-      </article>
-    </section>
+    <section class="places page__places"></section>
   </main>
 
   <section class="popup popup_type_edit-profile">
@@ -100,6 +58,14 @@
     <p class="footer__copyright">&copy;&nbsp;2021&nbsp;Mesto&nbsp;Russia</p>
   </footer>
 
-  <script src="./scripts/index.js"></script>
+  <template class="template">
+    <article class="place page__place">
+      <img src="" alt="" class="place__image">
+      <div class="place__main">
+        <h2 class="place__title"></h2>
+        <button class="place__like-button" type="button"></button>
+      </div>
+    </article>
+  </template>
 </body>
 </html>
