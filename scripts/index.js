@@ -68,12 +68,15 @@ function getItem(item) {
   const headerEl = newItem.querySelector('.place__title');
   const imageEl = newItem.querySelector('.place__image');
   const likeButton = newItem.querySelector('.place__like-button');
+  const removeBtn = newItem.querySelector('.place__delete-button');
 
   headerEl.textContent = item.name;
   imageEl.setAttribute('src', item.imageSource);
   imageEl.setAttribute('alt', item.imageAlt);
   
   likeButton.addEventListener('click', handleLike);
+
+  removeBtn.addEventListener('click', handleDelete);
 
   return newItem;
 } 
@@ -126,7 +129,17 @@ function handleLike (evt) {
   const eventTarget = evt.target;
 
   eventTarget.classList.toggle('place__like-button_active');
-};
+}
+
+// Handle Delete
+
+function handleDelete (evt) {
+  const eventTarget = evt.target;
+
+  const cardItem = eventTarget.closest('.place');
+  
+  cardItem.remove();
+}
 
 
 editLink.addEventListener('click', openPopupEdit);
