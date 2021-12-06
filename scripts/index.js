@@ -2,24 +2,23 @@
 const editLink = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupEditCloseButton = popupEditProfile.querySelector('.popup__close');
-const formElement = document.querySelector('.form');
+const editFormElement = document.querySelector('.form__edit');
 const nameInput = document.querySelector('.form__item_type_name');
 const jobInput = document.querySelector('.form__item_type_job');
+const submitProfileChanges = document.querySelector('.form__item_type_submit-changes');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
 // Add post form
+const addFormElement = document.querySelector('.form__add');
 const addButton = document.querySelector('.profile__add-button');
 const popupAddPost = document.querySelector('.popup_type_add-post');
 const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
 const postTitle = popupAddPost.querySelector('.form__item_type_post-title');
 const postImage = popupAddPost.querySelector('.form__item_type_post-image');
-const submit = document.querySelector('.form__item_type_submit');
+const submitNewPost = document.querySelector('.form__item_type_submit-new-post');
 
-// Like button
-// const places = document.querySelector('.places').cloneNode(true);
-
-// Initial cards with pictures
+// Initial cards 
 const initialCards = [
   {
     name: 'Алтайский край',
@@ -56,6 +55,38 @@ const initialCards = [
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
 
+// Like button
+// const places = document.querySelector('.places').cloneNode(true);
+
+// Open popupEditProfile
+function openPopupEdit () {
+  popupEditProfile.classList.add('popup_opened');
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+}
+
+// Close popup
+function close () {
+  popupEditProfile.classList.remove('popup_opened');
+  popupAddPost.classList.remove('popup_opened');
+}
+
+// Submit popupEditProfile changes
+function formSubmitHandler(evt) {
+  evt.preventDefault(); 
+    
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+
+  close();
+}
+
+// Open popupAddPost
+function openPopupAdd() {
+  popupAddPost.classList.add('popup_opened');
+}
+
+// Initial cards with pictures
 function render() {
   const html = initialCards
     .map(getItem)
@@ -74,47 +105,35 @@ function getItem(item) {
   return newItem;
 } 
 
-render();
-
-// Open popupEditProfile
-function openPopupEdit () {
-  popupEditProfile.classList.add('popup_opened');
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-}
-
-editLink.addEventListener('click', openPopupEdit);
-
-// Submit popupEditProfile changes
-function formSubmitHandler (evt) {
+// Handle AddPost
+function handleAdd(evt) {
   evt.preventDefault(); 
-    
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
 
+  const inputPostTitle = postTitle.value;
+  const inputPostImage = postImage.value;
+  const cardItem = getItem({name: inputPostTitle, imageSource: inputPostImage});
+  cardsContainerEl.prepend(cardItem);
+
+  postTitle.value = '';
+  postImage.value = '';
+  
   close();
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
 
-// Open popupAddPost
-function openPopupAdd () {
-  popupAddPost.classList.add('popup_opened');
-}
-
-addButton.addEventListener('click', openPopupAdd);
-
-// Close popup
-function close () {
-  popupEditProfile.classList.remove('popup_opened');
-  popupAddPost.classList.remove('popup_opened');
-}
-
-popupEditCloseButton.addEventListener('click', close);
-popupAddCloseButton.addEventListener('click', close);
 
 
 // Add like to a place
 // places.querySelector('.place__like-button').addEventListener('click', function (evt) {
 //   evt.target.classList.toggle('place__like-button_active');
 // }); 
+
+render();
+
+editLink.addEventListener('click', openPopupEdit);
+editFormElement.addEventListener('submit', formSubmitHandler);
+addButton.addEventListener('click', openPopupAdd);
+popupEditCloseButton.addEventListener('click', close);
+popupAddCloseButton.addEventListener('click', close);
+addFormElement.addEventListener('submit', handleAdd);
+
