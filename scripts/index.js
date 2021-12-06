@@ -1,23 +1,3 @@
-// Edit profile form
-const editLink = document.querySelector('.profile__edit-button');
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupEditCloseButton = popupEditProfile.querySelector('.popup__close');
-const editFormElement = document.querySelector('.form__edit');
-const nameInput = document.querySelector('.form__item_type_name');
-const jobInput = document.querySelector('.form__item_type_job');
-const submitProfileChanges = document.querySelector('.form__item_type_submit-changes');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-// Add post form
-const addFormElement = document.querySelector('.form__add');
-const addButton = document.querySelector('.profile__add-button');
-const popupAddPost = document.querySelector('.popup_type_add-post');
-const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
-const postTitle = popupAddPost.querySelector('.form__item_type_post-title');
-const postImage = popupAddPost.querySelector('.form__item_type_post-image');
-const submitNewPost = document.querySelector('.form__item_type_submit-new-post');
-
 // Initial cards 
 const initialCards = [
   {
@@ -55,8 +35,48 @@ const initialCards = [
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
 
-// Like button
-// const places = document.querySelector('.places').cloneNode(true);
+// Edit profile form
+const editLink = document.querySelector('.profile__edit-button');
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const popupEditCloseButton = popupEditProfile.querySelector('.popup__close');
+const editFormElement = document.querySelector('.form__edit');
+const nameInput = document.querySelector('.form__item_type_name');
+const jobInput = document.querySelector('.form__item_type_job');
+const submitProfileChanges = document.querySelector('.form__item_type_submit-changes');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+
+// Add post form
+const addFormElement = document.querySelector('.form__add');
+const addButton = document.querySelector('.profile__add-button');
+const popupAddPost = document.querySelector('.popup_type_add-post');
+const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
+const postTitle = popupAddPost.querySelector('.form__item_type_post-title');
+const postImage = popupAddPost.querySelector('.form__item_type_post-image');
+const submitNewPost = document.querySelector('.form__item_type_submit-new-post');
+
+// Initial cards with pictures
+function render() {
+  const html = initialCards
+    .map(getItem)
+  
+    cardsContainerEl.append(...html);
+}
+
+function getItem(item) {
+  const newItem = templateEl.content.cloneNode(true);
+  const headerEl = newItem.querySelector('.place__title');
+  const imageEl = newItem.querySelector('.place__image');
+  const likeButton = newItem.querySelector('.place__like-button');
+
+  headerEl.textContent = item.name;
+  imageEl.setAttribute('src', item.imageSource);
+  imageEl.setAttribute('alt', item.imageAlt);
+  
+  likeButton.addEventListener('click', handleLike);
+
+  return newItem;
+} 
 
 // Open popupEditProfile
 function openPopupEdit () {
@@ -86,25 +106,6 @@ function openPopupAdd() {
   popupAddPost.classList.add('popup_opened');
 }
 
-// Initial cards with pictures
-function render() {
-  const html = initialCards
-    .map(getItem)
-  
-    cardsContainerEl.append(...html);
-}
-
-function getItem(item) {
-  const newItem = templateEl.content.cloneNode(true);
-  const headerEl = newItem.querySelector('.place__title');
-  const imageEl = newItem.querySelector('.place__image');
-  headerEl.textContent = item.name;
-  imageEl.setAttribute('src', item.imageSource);
-  imageEl.setAttribute('alt', item.imageAlt);
-
-  return newItem;
-} 
-
 // Handle AddPost
 function handleAdd(evt) {
   evt.preventDefault(); 
@@ -120,15 +121,13 @@ function handleAdd(evt) {
   close();
 }
 
+// Handle Like
+function handleLike (evt) {
+  const eventTarget = evt.target;
 
+  eventTarget.classList.toggle('place__like-button_active');
+};
 
-
-// Add like to a place
-// places.querySelector('.place__like-button').addEventListener('click', function (evt) {
-//   evt.target.classList.toggle('place__like-button_active');
-// }); 
-
-render();
 
 editLink.addEventListener('click', openPopupEdit);
 editFormElement.addEventListener('submit', formSubmitHandler);
@@ -137,3 +136,4 @@ popupEditCloseButton.addEventListener('click', close);
 popupAddCloseButton.addEventListener('click', close);
 addFormElement.addEventListener('submit', handleAdd);
 
+render();
