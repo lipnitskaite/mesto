@@ -43,7 +43,6 @@ const popupEditCloseButton = popupEditProfile.querySelector('.popup__close');
 const editFormElement = document.querySelector('.form_type_edit');
 const nameInput = document.querySelector('.form__item_type_name');
 const jobInput = document.querySelector('.form__item_type_job');
-const submitProfileChanges = document.querySelector('.form__item_type_submit-changes');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
@@ -54,7 +53,6 @@ const popupAddPost = document.querySelector('.popup_type_add-post');
 const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
 const postTitle = popupAddPost.querySelector('.form__item_type_post-title');
 const postImage = popupAddPost.querySelector('.form__item_type_post-image');
-const submitNewPost = document.querySelector('.form__item_type_submit-new-post');
 
 // PopupImage
 const popupImageItem = document.querySelector('.popup_type_image');
@@ -79,9 +77,9 @@ function getItem(item) {
   imageEl.setAttribute('src', item.imageSource);
   imageEl.setAttribute('alt', item.imageAlt);
   
-  likeButton.addEventListener('click', handleLike);
+  likeButton.addEventListener('click', handleLike); // Handle Like Button
 
-  removeBtn.addEventListener('click', handleDelete);
+  removeBtn.addEventListener('click', handleDelete); // Handle Delete Button
 
   // Handle popupImage
   const imagePopup = document.querySelector('.popup__image');
@@ -106,20 +104,20 @@ function openPopupEdit () {
 }
 
 // Close popup
-function close () {
+function closePopup () {
   popupEditProfile.classList.remove('popup_opened');
   popupAddPost.classList.remove('popup_opened');
   popupImageItem.classList.remove('popup_opened');
 }
 
 // Submit popupEditProfile changes
-function formSubmitHandler(evt) {
+function handleFormSubmit (evt) {
   evt.preventDefault(); 
     
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
 
-  close();
+  closePopup();
 }
 
 // Open popupAddPost
@@ -134,12 +132,13 @@ function handleAdd(evt) {
   const inputPostTitle = postTitle.value;
   const inputPostImage = postImage.value;
   const cardItem = getItem({name: inputPostTitle, imageSource: inputPostImage});
+  
   cardsContainerEl.prepend(cardItem);
 
   postTitle.value = '';
   postImage.value = '';
   
-  close();
+  closePopup();
 }
 
 // Handle Like
@@ -152,18 +151,17 @@ function handleLike (evt) {
 // Handle Delete
 function handleDelete (evt) {
   const eventTarget = evt.target;
-
   const cardItem = eventTarget.closest('.place');
   
   cardItem.remove();
 }
 
 editLink.addEventListener('click', openPopupEdit);
-editFormElement.addEventListener('submit', formSubmitHandler);
+editFormElement.addEventListener('submit', handleFormSubmit);
 addButton.addEventListener('click', openPopupAdd);
-popupEditCloseButton.addEventListener('click', close);
-popupAddCloseButton.addEventListener('click', close);
+popupEditCloseButton.addEventListener('click', closePopup);
+popupAddCloseButton.addEventListener('click', closePopup);
 addFormElement.addEventListener('submit', handleAdd);
-popupImageItemCloseButton.addEventListener('click', close);
+popupImageItemCloseButton.addEventListener('click', closePopup);
 
 render();
