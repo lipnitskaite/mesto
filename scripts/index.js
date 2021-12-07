@@ -35,6 +35,7 @@ const initialCards = [
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
 
+
 // Edit profile form
 const editLink = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
@@ -54,6 +55,10 @@ const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
 const postTitle = popupAddPost.querySelector('.form__item_type_post-title');
 const postImage = popupAddPost.querySelector('.form__item_type_post-image');
 const submitNewPost = document.querySelector('.form__item_type_submit-new-post');
+
+// PopupImage
+const popupImageItem = document.querySelector('.popup_type_image');
+const popupImageItemCloseButton = popupImageItem.querySelector('.popup__close');
 
 // Initial cards with pictures
 function render() {
@@ -78,6 +83,18 @@ function getItem(item) {
 
   removeBtn.addEventListener('click', handleDelete);
 
+  // Handle popupImage
+  const imagePopup = document.querySelector('.popup__image');
+  const captionPopup = document.querySelector('.popup__caption');
+
+  imageEl.addEventListener('click', function() {
+    imagePopup.setAttribute('src', item.imageSource);
+    imagePopup.setAttribute('alt', item.imageAlt);
+    captionPopup.textContent = item.name;
+
+    popupImageItem.classList.add('popup_opened');
+  });
+
   return newItem;
 } 
 
@@ -92,6 +109,7 @@ function openPopupEdit () {
 function close () {
   popupEditProfile.classList.remove('popup_opened');
   popupAddPost.classList.remove('popup_opened');
+  popupImageItem.classList.remove('popup_opened');
 }
 
 // Submit popupEditProfile changes
@@ -132,7 +150,6 @@ function handleLike (evt) {
 }
 
 // Handle Delete
-
 function handleDelete (evt) {
   const eventTarget = evt.target;
 
@@ -141,12 +158,12 @@ function handleDelete (evt) {
   cardItem.remove();
 }
 
-
 editLink.addEventListener('click', openPopupEdit);
 editFormElement.addEventListener('submit', formSubmitHandler);
 addButton.addEventListener('click', openPopupAdd);
 popupEditCloseButton.addEventListener('click', close);
 popupAddCloseButton.addEventListener('click', close);
 addFormElement.addEventListener('submit', handleAdd);
+popupImageItemCloseButton.addEventListener('click', close);
 
 render();
