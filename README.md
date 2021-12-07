@@ -22,4 +22,4 @@ https://lipnitskaite.github.io/mesto/
 * Файловая структура: Nested БЭМ
 * Flexbox и Grid Layout для создания сеток
 * Media Queries для адаптации 
-* JavaScript для реализации попапа
+* JavaScript для отображения контента, реализации попапов и добавления лайков и новых карточек
