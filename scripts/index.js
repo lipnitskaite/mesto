@@ -24,11 +24,11 @@ const popupImageItem = document.querySelector('.popup_type_image');
 const popupImageItemCloseButton = popupImageItem.querySelector('.popup__close');
 
 // Initial cards with pictures
-function render() {
-  const html = initialCards
-    .map(getItem)
+function render(container, items, getFunction) {
+  const html = items
+    .map(getFunction)
   
-    cardsContainerEl.append(...html);
+    container.append(...html);
 }
 
 function getItem(item) {
@@ -140,4 +140,4 @@ popupImageItemCloseButton.addEventListener('click', function () {
   closePopup(popupImageItem);
 });
 
-render();
+render(cardsContainerEl, initialCards, getItem);
