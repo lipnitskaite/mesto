@@ -63,11 +63,14 @@ function getItem(item) {
   return newItem;
 } 
 
-// Close popup
-function closePopup () {
-  popupEditProfile.classList.remove('popup_opened');
-  popupAddPost.classList.remove('popup_opened');
-  popupImageItem.classList.remove('popup_opened');
+// Handle openPopup
+function openPopup(evt) {
+  evt.classList.add('popup_opened');
+}
+
+// Handle closePopup
+function closePopup (evt) {
+  evt.classList.remove('popup_opened');
 }
 
 // Submit popupEditProfile changes
@@ -77,12 +80,7 @@ function handleFormSubmit (evt) {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
 
-  closePopup();
-}
-
-// Handle openPopup
-function openPopup(evt) {
-  evt.classList.add('popup_opened');
+  closePopup(popupEditProfile);
 }
 
 // Handle AddPost
@@ -98,7 +96,7 @@ function handleAdd(evt) {
   postTitle.value = '';
   postImage.value = '';
   
-  closePopup();
+  closePopup(popupAddPost);
 }
 
 // Handle Like
@@ -134,8 +132,14 @@ addButton.addEventListener('click', function () {
 addFormElement.addEventListener('submit', handleAdd);
 
 // Popup CloseButton
-popupEditCloseButton.addEventListener('click', closePopup);
-popupAddCloseButton.addEventListener('click', closePopup);
-popupImageItemCloseButton.addEventListener('click', closePopup);
+popupEditCloseButton.addEventListener('click', function () {
+  closePopup(popupEditProfile);
+});
+popupAddCloseButton.addEventListener('click', function () {
+  closePopup(popupAddPost);
+});
+popupImageItemCloseButton.addEventListener('click', function () {
+  closePopup(popupImageItem);
+});
 
 render();
