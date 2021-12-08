@@ -1,8 +1,6 @@
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
 
-// const popups = document.querySelectorAll('.popup');
-
 // Edit profile form
 const editLink = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
