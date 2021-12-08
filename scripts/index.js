@@ -1,40 +1,7 @@
-// Initial cards 
-const initialCards = [
-  {
-    name: 'Алтайский край',
-    imageSource: './images/altai.jpg',
-    imageAlt: 'Сосновый лес на фоне заснеженных гор'
-  },
-  {
-    name: 'Озеро Байкал',
-    imageSource: './images/baikal-lake.jpg',
-    imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
-  },
-  {
-    name: 'Кавказ',
-    imageSource: './images/caucasus.jpg',
-    imageAlt: 'Летний вид на горы Кавказа'
-  },
-  {
-    name: 'Гора Эльбрус',
-    imageSource: './images/elbrus-mountain.jpg',
-    imageAlt: 'Осенний вид на Эльбрус'
-  },
-  {
-    name: 'Камчатка',
-    imageSource: './images/kamchatka.jpg',
-    imageAlt: 'Каменнистые горы посреди моря'
-  },
-  {
-    name: 'Куршская Коса',
-    imageSource: './images/kurshskaya-kosa.jpg',
-    imageAlt: 'Деревянная дорога посреди песчаных дюн'
-  }
-];
-
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
 
+// const popups = document.querySelectorAll('.popup');
 
 // Edit profile form
 const editLink = document.querySelector('.profile__edit-button');
@@ -90,18 +57,11 @@ function getItem(item) {
     imagePopup.setAttribute('alt', item.imageAlt);
     captionPopup.textContent = item.name;
 
-    popupImageItem.classList.add('popup_opened');
+    openPopup(popupImageItem);
   });
 
   return newItem;
 } 
-
-// Open popupEditProfile
-function openPopupEdit () {
-  popupEditProfile.classList.add('popup_opened');
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-}
 
 // Close popup
 function closePopup () {
@@ -120,13 +80,13 @@ function handleFormSubmit (evt) {
   closePopup();
 }
 
-// Open popupAddPost
-function openPopupAdd() {
-  popupAddPost.classList.add('popup_opened');
+// Handle openPopup
+function openPopup(evt) {
+  evt.classList.add('popup_opened');
 }
 
 // Handle AddPost
-function handleAdd(evt) {
+function handleAdd(evt) {  
   evt.preventDefault(); 
 
   const inputPostTitle = postTitle.value;
@@ -156,12 +116,26 @@ function handleDelete (evt) {
   cardItem.remove();
 }
 
-editLink.addEventListener('click', openPopupEdit);
-editFormElement.addEventListener('submit', handleFormSubmit);
-addButton.addEventListener('click', openPopupAdd);
+// Open popupEditProfile
+editLink.addEventListener('click', function () {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+
+  openPopup(popupEditProfile);
+});
+
+editFormElement.addEventListener('submit', handleFormSubmit); 
+
+// Open popupAddPost
+addButton.addEventListener('click', function () {
+  openPopup(popupAddPost);
+});
+
+addFormElement.addEventListener('submit', handleAdd);
+
+// Popup CloseButton
 popupEditCloseButton.addEventListener('click', closePopup);
 popupAddCloseButton.addEventListener('click', closePopup);
-addFormElement.addEventListener('submit', handleAdd);
 popupImageItemCloseButton.addEventListener('click', closePopup);
 
 render();
