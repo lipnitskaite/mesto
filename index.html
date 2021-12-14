@@ -33,10 +33,12 @@
       <form class="form form_type_edit" name="edit_profile">
         <h2 class="form__title">Редактировать профиль</h2>
         <fieldset class="form__container">
-          <input class="form__input form__input_type_name" type="text" name="username" value="Жак-Ив Кусто">
-          <input class="form__input form__input_type_job" type="text" name="userdescription" value="Исследователь океана">
+          <input class="form__input form__input_type_name form__input_type_error" type="text" name="username" value="Жак-Ив Кусто">
+          <span class="form__input-error form__input-error_type_name">Bla Bla</span>
+          <input class="form__input form__input_type_job form__input_type_error" type="text" name="userdescription" value="Исследователь океана">
+          <span class="form__input-error form__input-error_type_job">Bla Bla</span>
         </fieldset>
-        <button class="form__button form__button_type_submit-changes" type="submit" name="submit" value="Сохранить">Сохранить</button>
+        <button class="form__button form__button_type_submit-changes form__button_inactive" type="submit" name="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
   </section>
@@ -48,7 +50,9 @@
         <h2 class="form__title">Новое место</h2>
         <fieldset class="form__container">
           <input class="form__input form__input_type_post-title" type="text" name="post_title" placeholder="Название">
+          <span class="form__input-error form__input-error_type_post-title"></span>
           <input class="form__input form__input_type_post-image" type="text" name="post_image" placeholder="Ссылка на картинку">
+          <span class="form__input-error form__input-error_type_post-image"></span>
         </fieldset>
         <button class="form__button form__button_type_submit-new-post" type="submit" name="submit" value="Создать">Создать</button>
       </form>
