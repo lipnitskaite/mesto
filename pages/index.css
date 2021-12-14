@@ -33,11 +33,12 @@
 /* Form Block */
 @import url(../blocks/form/__container/form__container.css);
 @import url(../blocks/form/__title/form__title.css);
-@import url(../blocks/form/__item/form__item.css);
-@import url(../blocks/form/__item/_type/_submit-changes/form__item_type_submit-changes.css);
-@import url(../blocks/form/__item/_type/_submit-new-post/form__item_type_submit-new-post.css);
-@import url(../blocks/form/__item/_type/_post-title/form__item_type_post-title.css);
-@import url(../blocks/form/__item/_type/_post-image/form__item_type_post-image.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/_post-title/form__input_type_post-title.css);
+@import url(../blocks/form/__input/_type/_post-image/form__input_type_post-image.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__button/_type/_submit-changes/form__button_type_submit-changes.css);
+@import url(../blocks/form/__button/_type/_submit-new-post/form__button_type_submit-new-post.css);
 
 /* Places Block */
 @import url(../blocks/places/places.css);
