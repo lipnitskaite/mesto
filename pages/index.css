@@ -42,6 +42,7 @@
 @import url(../blocks/form/__button/_type/_submit-new-post/form__button_type_submit-new-post.css);
 @import url(../blocks/form/__button/_inactive/form__button_inactive.css);
 @import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_active/form__input-error_active.css);
 
 /* Places Block */
 @import url(../blocks/places/places.css);
