@@ -71,6 +71,7 @@ function openPopup(evt) {
 // Handle closePopup
 function closePopup (evt) {
   evt.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 // Submit popupEditProfile changes
