@@ -1,5 +1,6 @@
 const cardsContainerEl = document.querySelector('.places');
 const templateEl = document.querySelector('.template');
+const popups = document.querySelectorAll('.popup');
 
 // Edit profile form
 const editLink = document.querySelector('.profile__edit-button');
@@ -139,5 +140,11 @@ popupAddCloseButton.addEventListener('click', function () {
 popupImageItemCloseButton.addEventListener('click', function () {
   closePopup(popupImageItem);
 });
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', function () {
+    closePopup(popup);
+  });
+})
 
 render(cardsContainerEl, initialCards, getItem);

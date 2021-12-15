@@ -60,12 +60,6 @@ const enableValidation = ({ formSelector, ...rest }) => {
     });
 
     setEventListeners(form, rest);
-    
-    // const fieldsetList = Array.from(formSelector.querySelectorAll('.form__set'));
-    
-    // fieldsetList.forEach((fieldSet) => {
-    //   setEventListeners(fieldSet);
-    // });
   });
 };
 
