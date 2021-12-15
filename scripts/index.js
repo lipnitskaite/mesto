@@ -130,20 +130,15 @@ addButton.addEventListener('click', function () {
 
 addFormElement.addEventListener('submit', handleAdd);
 
-// Popup CloseButton
-popupEditCloseButton.addEventListener('click', function () {
-  closePopup(popupEditProfile);
-});
-popupAddCloseButton.addEventListener('click', function () {
-  closePopup(popupAddPost);
-});
-popupImageItemCloseButton.addEventListener('click', function () {
-  closePopup(popupImageItem);
-});
-
+// Close Popup
 popups.forEach((popup) => {
-  popup.addEventListener('click', function () {
-    closePopup(popup);
+  popup.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup__overlay')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    }
   });
 })
 

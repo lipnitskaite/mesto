@@ -1,6 +1,6 @@
 .popup {
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -12,5 +12,4 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility .4s, opacity .4s;
-  cursor: pointer;
 }
