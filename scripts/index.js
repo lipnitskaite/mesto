@@ -65,6 +65,7 @@ function getItem(item) {
 // Handle openPopup
 function openPopup(evt) {
   evt.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // Handle closePopup
@@ -141,5 +142,13 @@ popups.forEach((popup) => {
     }
   });
 })
+
+// Close Popup By Escape
+function closePopupByEsc (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
 
 render(cardsContainerEl, initialCards, getItem);
