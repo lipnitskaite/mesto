@@ -19,10 +19,13 @@ const popupAddPost = document.querySelector('.popup_type_add-post');
 const popupAddCloseButton = popupAddPost.querySelector('.popup__close');
 const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
 const postImage = popupAddPost.querySelector('.form__input_type_post-image');
+const buttonElement = popupAddPost.querySelector('.form__button_type_submit-new-post');
 
 // PopupImage
 const popupImageItem = document.querySelector('.popup_type_image');
 const popupImageItemCloseButton = popupImageItem.querySelector('.popup__close');
+const imagePopup = popupImageItem.querySelector('.popup__image');
+const captionPopup = popupImageItem.querySelector('.popup__caption');
 
 // Initial cards with pictures
 function render(container, items, getFunction) {
@@ -48,9 +51,6 @@ function getItem(item) {
   removeBtn.addEventListener('click', handleDelete); // Handle Delete Button
 
   // Handle popupImage
-  const imagePopup = document.querySelector('.popup__image');
-  const captionPopup = document.querySelector('.popup__caption');
-
   imageEl.addEventListener('click', function() {
     imagePopup.setAttribute('src', item.imageSource);
     imagePopup.setAttribute('alt', item.imageAlt);
@@ -91,13 +91,16 @@ function handleAdd(evt) {
   const inputPostTitle = postTitle.value;
   const inputPostImage = postImage.value;
   const cardItem = getItem({name: inputPostTitle, imageSource: inputPostImage});
+
+  buttonElement.classList.add('form__button_inactive');
+  buttonElement.disabled = true;  
   
   cardsContainerEl.prepend(cardItem);
 
   postTitle.value = '';
   postImage.value = '';
-  
-  closePopup(popupAddPost);
+
+  closePopup(popupAddPost);  
 }
 
 // Handle Like
