@@ -100,7 +100,7 @@ function handleAdd(evt) {
   postTitle.value = '';
   postImage.value = '';
 
-  closePopup(popupAddPost);  
+  closePopup(popupAddPost);
 }
 
 // Handle Like
