@@ -35,7 +35,7 @@ const initialCards = [
 ];
 
 initialCards.forEach((item) => {
-  const card = new Card(item.name, item.imageSource, item.imageAlt);
+  const card = new Card(item, '.template');
   const cardElement = card.generateCard();
 
   document.querySelector('.places').append(cardElement);

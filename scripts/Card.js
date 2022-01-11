@@ -1,13 +1,14 @@
 class Card {
-  constructor(name, imageSource, imageAlt) {
-    this._name = name;
-    this._imageSource = imageSource;
-    this._imageAlt = imageAlt;
+  constructor(data, cardSelector) {
+    this._name = data.name;
+    this._imageSource = data.imageSource;
+    this._imageAlt = data.imageAlt;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
     const cardElement = document
-    .querySelector('.template')
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.place')
     .cloneNode(true);
