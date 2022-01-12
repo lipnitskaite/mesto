@@ -1,9 +1,10 @@
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, openPopup) {
     this._name = data.name;
     this._imageSource = data.imageSource;
     this._imageAlt = data.imageAlt;
     this._cardSelector = cardSelector;
+    this._openPopup = openPopup;
   }
 
   _getTemplate() {
@@ -18,7 +19,7 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListenersForButtons();
+    this._setEventListeners();
   
     this._element.querySelector('.place__image').src = this._imageSource;
     this._element.querySelector('.place__image').alt = this._imageAlt;
@@ -27,9 +28,10 @@ class Card {
     return this._element;
   }
 
-  _setEventListenersForButtons() {
+  _setEventListeners() {
     this._element.querySelector('.place__like-button').addEventListener('click', this._handleLike);
     this._element.querySelector('.place__delete-button').addEventListener('click', this._handleDelete);
+    this._element.querySelector('.place__image').addEventListener('click', this._openPopup);
   }
 
   _handleLike = () => {
