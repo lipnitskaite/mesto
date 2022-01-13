@@ -1,4 +1,5 @@
-import Card from './Card.js';
+import Card from './Card';
+import FormValidator from './FormValidator';
 
 // Initial cards 
 const initialCards = [
@@ -58,6 +59,22 @@ const popupAddPost = document.querySelector('.popup_type_add-post');
 const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
 const postImage = popupAddPost.querySelector('.form__input_type_post-image');
 const buttonElement = popupAddPost.querySelector('.form__button_type_submit-new-post');
+
+// Validation
+const enableValidation = ({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+});
+
+const validateAddForm = new FormValidator(enableValidation, addFormElement);
+const validateEditForm = new FormValidator(enableValidation, editFormElement);
+
+validateAddForm.enableValidation();
+validateEditForm.enableValidation();
 
 // Render cards with pictures
 function render(container, items, getFunction) {
