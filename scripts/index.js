@@ -129,12 +129,6 @@ function handleAdd(evt) {
 function openPopup(evt) {
   evt.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
-
-  postTitle.value = '';
-  postImage.value = '';
-
-  formValidators[ profileForm.getAttribute('name') ].resetValidation();
-  formValidators[ addCardForm.getAttribute('name') ].resetValidation();
 }
 
 // Open popupEditProfile
@@ -143,6 +137,8 @@ editLink.addEventListener('click', function () {
   jobInput.value = profileSubtitle.textContent;
 
   openPopup(popupEditProfile);
+
+  formValidators[ profileForm.getAttribute('name') ].resetValidation();
 });
 
 profileForm.addEventListener('submit', handleFormSubmit); 
@@ -150,6 +146,11 @@ profileForm.addEventListener('submit', handleFormSubmit);
 // Open popupAddPost
 addButton.addEventListener('click', function () {
   openPopup(popupAddPost);
+
+  postTitle.value = '';
+  postImage.value = '';
+
+  formValidators[ addCardForm.getAttribute('name') ].resetValidation();
 });
 
 addCardForm.addEventListener('submit', handleAdd);
