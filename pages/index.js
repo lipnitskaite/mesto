@@ -1,63 +1,7 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
 
-// Initial cards 
-const initialCards = [
-  {
-    name: 'Алтайский край',
-    imageSource: './images/altai.jpg',
-    imageAlt: 'Сосновый лес на фоне заснеженных гор'
-  },
-  {
-    name: 'Озеро Байкал',
-    imageSource: './images/baikal-lake.jpg',
-    imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
-  },
-  {
-    name: 'Кавказ',
-    imageSource: './images/caucasus.jpg',
-    imageAlt: 'Летний вид на горы Кавказа'
-  },
-  {
-    name: 'Гора Эльбрус',
-    imageSource: './images/elbrus-mountain.jpg',
-    imageAlt: 'Осенний вид на Эльбрус'
-  },
-  {
-    name: 'Камчатка',
-    imageSource: './images/kamchatka.jpg',
-    imageAlt: 'Каменнистые горы посреди моря'
-  },
-  {
-    name: 'Куршская Коса',
-    imageSource: './images/kurshskaya-kosa.jpg',
-    imageAlt: 'Деревянная дорога посреди песчаных дюн'
-  }
-];
-
-const cardsContainerEl = document.querySelector('.places');
-const popups = document.querySelectorAll('.popup');
-
-// Image Popup
-const popupImageItem = document.querySelector('.popup_type_image');
-const imagePopup = popupImageItem.querySelector('.popup__image');
-const captionPopup = popupImageItem.querySelector('.popup__caption');
-
-// Edit profile form
-const editLink = document.querySelector('.profile__edit-button');
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const profileForm = document.querySelector('.form_type_edit');
-const nameInput = document.querySelector('.form__input_type_name');
-const jobInput = document.querySelector('.form__input_type_job');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-// Add post form
-const addCardForm = document.querySelector('.form_type_add');
-const addButton = document.querySelector('.profile__add-button');
-const popupAddPost = document.querySelector('.popup_type_add-post');
-const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
-const postImage = popupAddPost.querySelector('.form__input_type_post-image');
+import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, popups, postTitle, postImage, popupImageItem, imagePopup, captionPopup, profileTitle, profileSubtitle, popupEditProfile, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
 
 // Forms Validation
 const config = ({

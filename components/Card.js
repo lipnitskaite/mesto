@@ -1,8 +1,8 @@
-class Card {
-  constructor(data, cardSelector, handleCardClick) {
-    this._name = data.name;
-    this._imageSource = data.imageSource;
-    this._imageAlt = data.imageAlt;
+export class Card {
+  constructor({ name, imageSource, imageAlt }, cardSelector, handleCardClick) {
+    this._name = name;
+    this._imageSource = imageSource;
+    this._imageAlt = imageAlt;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -44,5 +44,3 @@ class Card {
     this._element.remove();
   }
 }
-
-export default Card;
