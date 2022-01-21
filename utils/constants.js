@@ -35,15 +35,18 @@ export const initialCards = [
 export const cardsContainerEl = document.querySelector('.places');
 export const cardsContainerSelector = '.places';
 export const popups = document.querySelectorAll('.popup');
+export const popupSelector = '.popup';
 
 // Image Popup
 export const popupImageItem = document.querySelector('.popup_type_image');
+export const popupWithImageSelector = '.popup_type_image';
 export const imagePopup = popupImageItem.querySelector('.popup__image');
 export const captionPopup = popupImageItem.querySelector('.popup__caption');
 
 // Edit profile form
 export const editLink = document.querySelector('.profile__edit-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+export const popupEditProfileSelector = '.popup_type_edit-profile';
 export const profileForm = document.querySelector('.form_type_edit');
 export const nameInput = document.querySelector('.form__input_type_name');
 export const jobInput = document.querySelector('.form__input_type_job');

@@ -1,8 +1,9 @@
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
-import { Section } from '../components/Section.js';
+import {Section} from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
 
-import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, popups, postTitle, postImage, popupImageItem, imagePopup, captionPopup, profileTitle, profileSubtitle, popupEditProfile, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
+import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, popups, popupSelector, postTitle, postImage, popupWithImageSelector, profileTitle, profileSubtitle, popupEditProfile, popupEditProfileSelector, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
 
 // Forms Validation
 const config = ({
@@ -33,11 +34,10 @@ enableValidation(config);
 // Render cards with pictures
 function getItem(item) {
   const handleCardClick = () => {
-    imagePopup.setAttribute('src', item.imageSource);
-    imagePopup.setAttribute('alt', item.imageAlt);
-    captionPopup.textContent = item.name;
+    const popupWithImage = new PopupWithImage(popupWithImageSelector, item);
+    popupWithImage.openPopup();
 
-    openPopup(popupImageItem);
+    popupWithImage.setEventListeners();
   }
 
   const card = new Card(item, '.template', handleCardClick);
@@ -48,25 +48,19 @@ function getItem(item) {
 
 // Handle AddPost
 function handleAdd(evt) {  
-  evt.preventDefault(); 
+  // evt.preventDefault(); 
 
-  const inputPostTitle = postTitle.value;
-  const inputPostImage = postImage.value;
+  // const inputPostTitle = postTitle.value;
+  // const inputPostImage = postImage.value;
 
   const cardElement = getItem({name: inputPostTitle, imageSource: inputPostImage});
   
   cardsContainerEl.prepend(cardElement);
 
-  postTitle.value = '';
-  postImage.value = '';
+  // postTitle.value = '';
+  // postImage.value = '';
 
-  closePopup(popupAddPost);
-}
-
-// Handle openPopup
-function openPopup(evt) {
-  evt.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByEsc);
+  // closePopup(popupAddPost);
 }
 
 // Open popupEditProfile
@@ -74,12 +68,12 @@ editLink.addEventListener('click', function () {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 
-  openPopup(popupEditProfile);
+  // openPopup(popupEditProfile);
 
   formValidators[ profileForm.getAttribute('name') ].resetValidation();
 });
 
-profileForm.addEventListener('submit', handleFormSubmit); 
+// profileForm.addEventListener('submit', handleFormSubmit); 
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
@@ -94,40 +88,14 @@ addButton.addEventListener('click', function () {
 addCardForm.addEventListener('submit', handleAdd);
 
 // Submit popupEditProfile changes
-function handleFormSubmit (evt) {
-  evt.preventDefault(); 
+// function handleFormSubmit (evt) {
+  // evt.preventDefault(); 
     
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
+  // profileTitle.textContent = nameInput.value;
+  // profileSubtitle.textContent = jobInput.value;
 
-  closePopup(popupEditProfile);
-}
-
-// Handle closePopup
-function closePopup (evt) {
-  evt.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByEsc);
-}
-
-// Close Popup
-popups.forEach((popup) => {
-  popup.addEventListener('click', function (evt) {
-    if (evt.target.classList.contains('popup__overlay')) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__close')) {
-      closePopup(popup);
-    }
-  });
-})
-
-// Close Popup By Escape
-function closePopupByEsc (evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-}
+  // closePopup(popupEditProfile);
+// }
 
 const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
 section.render();
