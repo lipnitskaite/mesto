@@ -1,7 +1,8 @@
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
 
-import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, popups, postTitle, postImage, popupImageItem, imagePopup, captionPopup, profileTitle, profileSubtitle, popupEditProfile, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
+import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, popups, postTitle, postImage, popupImageItem, imagePopup, captionPopup, profileTitle, profileSubtitle, popupEditProfile, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
 
 // Forms Validation
 const config = ({
@@ -30,13 +31,6 @@ const enableValidation = (config) => {
 enableValidation(config);
 
 // Render cards with pictures
-function render(container, items, getFunction) {
-  const html = items
-    .map(getFunction)
-  
-    container.append(...html);
-}
-
 function getItem(item) {
   const handleCardClick = () => {
     imagePopup.setAttribute('src', item.imageSource);
@@ -135,4 +129,5 @@ function closePopupByEsc (evt) {
   }
 }
 
-render(cardsContainerEl, initialCards, getItem);
+const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
+section.render();

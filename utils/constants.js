@@ -33,6 +33,7 @@ export const initialCards = [
 ];
 
 export const cardsContainerEl = document.querySelector('.places');
+export const cardsContainerSelector = '.places';
 export const popups = document.querySelectorAll('.popup');
 
 // Image Popup
