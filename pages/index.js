@@ -1,9 +1,21 @@
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
+import {PopupWithImage} from '../components/PopupWithImage.js';
 
-import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, popups, popupSelector, postTitle, postImage, popupWithImageSelector, profileTitle, profileSubtitle, popupEditProfile, popupEditProfileSelector, nameInput, jobInput, popupAddPost } from '../utils/constants.js';
+import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, postTitle, postImage, popupWithImageSelector, profileTitle, profileSubtitle, nameInput, jobInput, popupAddPostSelector } from '../utils/constants.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+
+// Forms
+const addPostForm = new PopupWithForm(popupAddPostSelector, () => {
+  const inputPostTitle = postTitle.value;
+  const inputPostImage = postImage.value;
+
+  const cardElement = getItem({name: inputPostTitle, imageSource: inputPostImage});
+
+  cardsContainerEl.prepend(cardElement);
+}
+);
 
 // Forms Validation
 const config = ({
@@ -46,23 +58,6 @@ function getItem(item) {
   return cardElement;
 }
 
-// Handle AddPost
-function handleAdd(evt) {  
-  // evt.preventDefault(); 
-
-  // const inputPostTitle = postTitle.value;
-  // const inputPostImage = postImage.value;
-
-  const cardElement = getItem({name: inputPostTitle, imageSource: inputPostImage});
-  
-  cardsContainerEl.prepend(cardElement);
-
-  // postTitle.value = '';
-  // postImage.value = '';
-
-  // closePopup(popupAddPost);
-}
-
 // Open popupEditProfile
 editLink.addEventListener('click', function () {
   nameInput.value = profileTitle.textContent;
@@ -77,15 +72,10 @@ editLink.addEventListener('click', function () {
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
-  openPopup(popupAddPost);
-
-  postTitle.value = '';
-  postImage.value = '';
+  addPostForm.openPopup();
 
   formValidators[ addCardForm.getAttribute('name') ].resetValidation();
 });
-
-addCardForm.addEventListener('submit', handleAdd);
 
 // Submit popupEditProfile changes
 // function handleFormSubmit (evt) {
@@ -96,6 +86,8 @@ addCardForm.addEventListener('submit', handleAdd);
 
   // closePopup(popupEditProfile);
 // }
+
+addPostForm.setEventListeners();
 
 const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
 section.render();

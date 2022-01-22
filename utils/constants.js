@@ -57,5 +57,6 @@ export const profileSubtitle = document.querySelector('.profile__subtitle');
 export const addCardForm = document.querySelector('.form_type_add');
 export const addButton = document.querySelector('.profile__add-button');
 export const popupAddPost = document.querySelector('.popup_type_add-post');
+export const popupAddPostSelector = '.popup_type_add-post';
 export const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
 export const postImage = popupAddPost.querySelector('.form__input_type_post-image');
