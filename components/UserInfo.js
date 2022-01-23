@@ -17,14 +17,6 @@ export class UserInfo {
   }
 
   setUserInfo() {
-    // this._userInfoForm = document.querySelector('.form_type_edit');
-
-    // this._userInfoForm.addEventListener('submit', (evt) => {
-    //   evt.preventDefault();
-
-    //   this._profileTitleSelector.textContent = this._nameInput.value;
-    //   this._profileSubtitleSelector.textContent = this._jobInput.value;
-    // })
     this._profileTitleSelector.textContent = this._nameInput.value;
     this._profileSubtitleSelector.textContent = this._jobInput.value;
   }
