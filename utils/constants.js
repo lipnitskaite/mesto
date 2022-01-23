@@ -51,7 +51,9 @@ export const profileForm = document.querySelector('.form_type_edit');
 export const nameInput = document.querySelector('.form__input_type_name');
 export const jobInput = document.querySelector('.form__input_type_job');
 export const profileTitle = document.querySelector('.profile__title');
+export const profileTitleSelector = '.profile__title';
 export const profileSubtitle = document.querySelector('.profile__subtitle');
+export const profileSubtitleSelector = '.profile__subtitle';
 
 // Add post form
 export const addCardForm = document.querySelector('.form_type_add');

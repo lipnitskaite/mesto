@@ -1,10 +1,11 @@
+import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, postTitle, postImage, popupEditProfileSelector, popupWithImageSelector, popupAddPostSelector, profileTitleSelector, profileSubtitleSelector } from '../utils/constants.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
+import {Popup} from '../components/Popup.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
-
-import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, postTitle, postImage, popupWithImageSelector, profileTitle, profileSubtitle, nameInput, jobInput, popupAddPostSelector } from '../utils/constants.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
+import {UserInfo} from '../components/UserInfo.js';
 
 // Forms
 const addPostForm = new PopupWithForm(popupAddPostSelector, () => {
@@ -16,6 +17,10 @@ const addPostForm = new PopupWithForm(popupAddPostSelector, () => {
   cardsContainerEl.prepend(cardElement);
 }
 );
+const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector});
+
+// Popups
+const popupUserInfo = new Popup(popupEditProfileSelector);
 
 // Forms Validation
 const config = ({
@@ -60,15 +65,22 @@ function getItem(item) {
 
 // Open popupEditProfile
 editLink.addEventListener('click', function () {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
+  userInfoForm.getUserInfo();
 
-  // openPopup(popupEditProfile);
+  popupUserInfo.openPopup();
+  popupUserInfo.setEventListeners();
 
   formValidators[ profileForm.getAttribute('name') ].resetValidation();
 });
 
-// profileForm.addEventListener('submit', handleFormSubmit); 
+profileForm.addEventListener('submit', handleFormSubmit); 
+
+// Submit popupEditProfile changes
+function handleFormSubmit (evt) {
+  userInfoForm.setUserInfo();
+
+  popupUserInfo.closePopup();
+}
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
@@ -76,16 +88,6 @@ addButton.addEventListener('click', function () {
 
   formValidators[ addCardForm.getAttribute('name') ].resetValidation();
 });
-
-// Submit popupEditProfile changes
-// function handleFormSubmit (evt) {
-  // evt.preventDefault(); 
-    
-  // profileTitle.textContent = nameInput.value;
-  // profileSubtitle.textContent = jobInput.value;
-
-  // closePopup(popupEditProfile);
-// }
 
 addPostForm.setEventListeners();
 
