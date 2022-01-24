@@ -1,33 +1,41 @@
 // Initial cards 
+
+import altaiImage from '../images/altai.jpg';
+import baikalImage from '../images/baikal-lake.jpg';
+import caucasusImage from '../images/caucasus.jpg';
+import elbrusImage from '../images/elbrus-mountain.jpg';
+import kamchatkaImage from '../images/kamchatka.jpg';
+import kurshskayaKosaImage from '../images/kurshskaya-kosa.jpg';
+
 export const initialCards = [
   {
     name: 'Алтайский край',
-    imageSource: './images/altai.jpg',
+    imageSource: altaiImage,
     imageAlt: 'Сосновый лес на фоне заснеженных гор'
   },
   {
     name: 'Озеро Байкал',
-    imageSource: './images/baikal-lake.jpg',
+    imageSource: baikalImage,
     imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
   },
   {
     name: 'Кавказ',
-    imageSource: './images/caucasus.jpg',
+    imageSource: caucasusImage,
     imageAlt: 'Летний вид на горы Кавказа'
   },
   {
     name: 'Гора Эльбрус',
-    imageSource: './images/elbrus-mountain.jpg',
+    imageSource: elbrusImage,
     imageAlt: 'Осенний вид на Эльбрус'
   },
   {
     name: 'Камчатка',
-    imageSource: './images/kamchatka.jpg',
+    imageSource: kamchatkaImage,
     imageAlt: 'Каменнистые горы посреди моря'
   },
   {
     name: 'Куршская Коса',
-    imageSource: './images/kurshskaya-kosa.jpg',
+    imageSource: kurshskayaKosaImage,
     imageAlt: 'Деревянная дорога посреди песчаных дюн'
   }
 ];

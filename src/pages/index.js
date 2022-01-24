@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, postTitle, postImage, popupEditProfileSelector, popupWithImageSelector, popupAddPostSelector, profileTitleSelector, profileSubtitleSelector } from '../utils/constants.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
