@@ -4,6 +4,7 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popupSelector.querySelector('.form');
   }
 
   _getInputValues() {
@@ -20,23 +21,12 @@ export class PopupWithForm extends Popup {
 
   // Handle closePopup
   closePopup() {
-    this._popupSelector.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose);
-
+    super.closePopup();
     this._form.reset();
   }
 
   setEventListeners() {
-    this._form = this._popupSelector.querySelector('.form');
-
-    this._popupSelector.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('popup__overlay')) {
-        this.closePopup();
-      }
-      if (evt.target.classList.contains('popup__close')) {
-        this.closePopup();
-      }
-    });
+    super.setEventListeners();
 
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();

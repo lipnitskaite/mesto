@@ -13,8 +13,7 @@ export class PopupWithImage extends Popup {
     this._imagePopup = document.querySelector('.popup__image');
     this._captionPopup = document.querySelector('.popup__caption');
 
-    this._popupSelector.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleEscClose);
+    super.openPopup();
 
     this._imagePopup.src = this._imageSource;
     this._imagePopup.alt = this._imageAlt;
