@@ -42,5 +42,6 @@ export class Card {
 
   _handleDelete = () => {  
     this._element.remove();
+    this._element = null;
   }
 }

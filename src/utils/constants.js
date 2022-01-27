@@ -9,24 +9,9 @@ import kurshskayaKosaImage from '../images/kurshskaya-kosa.jpg';
 
 export const initialCards = [
   {
-    name: 'Алтайский край',
-    imageSource: altaiImage,
-    imageAlt: 'Сосновый лес на фоне заснеженных гор'
-  },
-  {
-    name: 'Озеро Байкал',
-    imageSource: baikalImage,
-    imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
-  },
-  {
-    name: 'Кавказ',
-    imageSource: caucasusImage,
-    imageAlt: 'Летний вид на горы Кавказа'
-  },
-  {
-    name: 'Гора Эльбрус',
-    imageSource: elbrusImage,
-    imageAlt: 'Осенний вид на Эльбрус'
+    name: 'Куршская Коса',
+    imageSource: kurshskayaKosaImage,
+    imageAlt: 'Деревянная дорога посреди песчаных дюн'
   },
   {
     name: 'Камчатка',
@@ -34,9 +19,24 @@ export const initialCards = [
     imageAlt: 'Каменнистые горы посреди моря'
   },
   {
-    name: 'Куршская Коса',
-    imageSource: kurshskayaKosaImage,
-    imageAlt: 'Деревянная дорога посреди песчаных дюн'
+    name: 'Гора Эльбрус',
+    imageSource: elbrusImage,
+    imageAlt: 'Осенний вид на Эльбрус'
+  },
+  {
+    name: 'Кавказ',
+    imageSource: caucasusImage,
+    imageAlt: 'Летний вид на горы Кавказа'
+  },
+  {
+    name: 'Озеро Байкал',
+    imageSource: baikalImage,
+    imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
+  },
+  {
+    name: 'Алтайский край',
+    imageSource: altaiImage,
+    imageAlt: 'Сосновый лес на фоне заснеженных гор'
   }
 ];
 
@@ -56,6 +56,7 @@ export const editLink = document.querySelector('.profile__edit-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupEditProfileSelector = '.popup_type_edit-profile';
 export const profileForm = document.querySelector('.form_type_edit');
+export const profileFormSelector = '.form_type_edit';
 export const nameInput = document.querySelector('.form__input_type_name');
 export const jobInput = document.querySelector('.form__input_type_job');
 export const profileTitle = document.querySelector('.profile__title');
@@ -65,6 +66,7 @@ export const profileSubtitleSelector = '.profile__subtitle';
 
 // Add post form
 export const addCardForm = document.querySelector('.form_type_add');
+export const addCardFormSelector = '.form_type_add';
 export const addButton = document.querySelector('.profile__add-button');
 export const popupAddPost = document.querySelector('.popup_type_add-post');
 export const popupAddPostSelector = '.popup_type_add-post';

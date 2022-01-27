@@ -1,27 +1,38 @@
 import '../pages/index.css';
-import { initialCards, editLink, profileForm, addButton, addCardForm, cardsContainerEl, cardsContainerSelector, postTitle, postImage, popupEditProfileSelector, popupWithImageSelector, popupAddPostSelector, profileTitleSelector, profileSubtitleSelector } from '../utils/constants.js';
+import { initialCards, editLink, profileForm, addButton, addCardForm, addCardFormSelector, cardsContainerSelector, postTitle, postImage, popupEditProfileSelector, profileFormSelector, popupWithImageSelector, popupAddPostSelector, profileTitleSelector, profileSubtitleSelector, nameInput, jobInput } from '../utils/constants.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
-import {Popup} from '../components/Popup.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 
-// Forms
-const addPostForm = new PopupWithForm(popupAddPostSelector, () => {
+// Section
+const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
+
+// AddPost Form
+const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector, () => {
   const inputPostTitle = postTitle.value;
   const inputPostImage = postImage.value;
 
   const cardElement = getItem({name: inputPostTitle, imageSource: inputPostImage});
 
-  cardsContainerEl.prepend(cardElement);
+  section.addItem(cardElement);
 }
 );
+
+// UserInfo Form
 const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector});
 
 // Popups
-const popupUserInfo = new Popup(popupEditProfileSelector);
+const popupUserInfo = new PopupWithForm(popupEditProfileSelector, profileFormSelector, (inputs) => {
+  userInfoForm.setUserInfo(inputs[nameInput.name], inputs[jobInput.name]);
+});
+
+popupUserInfo.setEventListeners();
+
+// Popup With Image
+const popupWithImage = new PopupWithImage(popupWithImageSelector);
 
 // Forms Validation
 const config = ({
@@ -52,10 +63,7 @@ enableValidation(config);
 // Render cards with pictures
 function getItem(item) {
   const handleCardClick = () => {
-    const popupWithImage = new PopupWithImage(popupWithImageSelector, item);
-    popupWithImage.openPopup();
-
-    popupWithImage.setEventListeners();
+    popupWithImage.openPopup(item);
   }
 
   const card = new Card(item, '.template', handleCardClick);
@@ -64,24 +72,18 @@ function getItem(item) {
   return cardElement;
 }
 
+popupWithImage.setEventListeners();
+
 // Open popupEditProfile
 editLink.addEventListener('click', function () {
-  userInfoForm.getUserInfo();
+  const currentUserForm = userInfoForm.getUserInfo();
+  nameInput.value = currentUserForm.username;
+  jobInput.value = currentUserForm.job;
 
   popupUserInfo.openPopup();
-  popupUserInfo.setEventListeners();
 
   formValidators[ profileForm.getAttribute('name') ].resetValidation();
 });
-
-profileForm.addEventListener('submit', handleFormSubmit); 
-
-// Submit popupEditProfile changes
-function handleFormSubmit (evt) {
-  userInfoForm.setUserInfo();
-
-  popupUserInfo.closePopup();
-}
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
@@ -92,5 +94,4 @@ addButton.addEventListener('click', function () {
 
 addPostForm.setEventListeners();
 
-const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
 section.render();
