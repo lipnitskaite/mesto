@@ -1,45 +1,3 @@
-// Initial cards 
-
-import altaiImage from '../images/altai.jpg';
-import baikalImage from '../images/baikal-lake.jpg';
-import caucasusImage from '../images/caucasus.jpg';
-import elbrusImage from '../images/elbrus-mountain.jpg';
-import kamchatkaImage from '../images/kamchatka.jpg';
-import kurshskayaKosaImage from '../images/kurshskaya-kosa.jpg';
-
-export const initialCards = [
-  {
-    name: 'Куршская Коса',
-    imageSource: kurshskayaKosaImage,
-    imageAlt: 'Деревянная дорога посреди песчаных дюн'
-  },
-  {
-    name: 'Камчатка',
-    imageSource: kamchatkaImage,
-    imageAlt: 'Каменнистые горы посреди моря'
-  },
-  {
-    name: 'Гора Эльбрус',
-    imageSource: elbrusImage,
-    imageAlt: 'Осенний вид на Эльбрус'
-  },
-  {
-    name: 'Кавказ',
-    imageSource: caucasusImage,
-    imageAlt: 'Летний вид на горы Кавказа'
-  },
-  {
-    name: 'Озеро Байкал',
-    imageSource: baikalImage,
-    imageAlt: 'Машина на замерзшем озере на фоне холмистого берега'
-  },
-  {
-    name: 'Алтайский край',
-    imageSource: altaiImage,
-    imageAlt: 'Сосновый лес на фоне заснеженных гор'
-  }
-];
-
 export const cardsContainerEl = document.querySelector('.places');
 export const cardsContainerSelector = '.places';
 export const popups = document.querySelectorAll('.popup');
@@ -58,7 +16,7 @@ export const popupEditProfileSelector = '.popup_type_edit-profile';
 export const profileForm = document.querySelector('.form_type_edit');
 export const profileFormSelector = '.form_type_edit';
 export const nameInput = document.querySelector('.form__input_type_name');
-export const jobInput = document.querySelector('.form__input_type_job');
+export const aboutInput = document.querySelector('.form__input_type_job');
 export const profileTitle = document.querySelector('.profile__title');
 export const profileTitleSelector = '.profile__title';
 export const profileSubtitle = document.querySelector('.profile__subtitle');

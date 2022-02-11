@@ -1,5 +1,25 @@
-import '../pages/index.css';
-import { initialCards, editLink, profileForm, addButton, addCardForm, addCardFormSelector, cardsContainerSelector, postTitle, postImage, popupEditProfileSelector, profileFormSelector, popupWithImageSelector, popupAddPostSelector, profileTitleSelector, profileSubtitleSelector, nameInput, jobInput } from '../utils/constants.js';
+// import '../pages/index.css';
+import { 
+  // initialCards, 
+  editLink, 
+  profileForm, 
+  addButton, 
+  addCardForm, 
+  addCardFormSelector, 
+  cardsContainerSelector, 
+  postTitle, 
+  postImage, 
+  popupEditProfileSelector, 
+  profileFormSelector, 
+  popupWithImageSelector, 
+  popupAddPostSelector, 
+  profileTitleSelector,
+  profileSubtitleSelector, 
+  nameInput, 
+  aboutInput 
+} from '../utils/constants.js';
+
+import {Api} from '../components/Api.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
@@ -7,8 +27,19 @@ import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 
+// Api
+const api = new Api({
+  adress: 'https://mesto.nomoreparties.co/v1/cohort-35',
+  token: '5ac1d86f-37b5-4f50-b37e-b1e98dd53da9'
+});
+
+api.getUserInfoApi();
+
 // Section
-const section = new Section({ items: initialCards, renderer: getItem }, cardsContainerSelector);
+const section = new Section({ 
+  renderer: getItem 
+  }, cardsContainerSelector
+);
 
 // AddPost Form
 const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector, () => {
@@ -26,7 +57,7 @@ const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector
 
 // Popups
 const popupUserInfo = new PopupWithForm(popupEditProfileSelector, profileFormSelector, (inputs) => {
-  userInfoForm.setUserInfo(inputs[nameInput.name], inputs[jobInput.name]);
+  userInfoForm.setUserInfo(inputs[nameInput.name], inputs[aboutInput.name]);
 });
 
 popupUserInfo.setEventListeners();
@@ -63,10 +94,10 @@ enableValidation(config);
 // Render cards with pictures
 function getItem(item) {
   const handleCardClick = () => {
-    popupWithImage.openPopup(item);
+    popupWithImage.openPopup({name: item.name, imageSource: item.link});
   }
 
-  const card = new Card(item, '.template', handleCardClick);
+  const card = new Card({name: item.name, imageSource: item.link}, '.template', handleCardClick);
   const cardElement = card.generateCard();
 
   return cardElement;
@@ -76,9 +107,9 @@ popupWithImage.setEventListeners();
 
 // Open popupEditProfile
 editLink.addEventListener('click', function () {
-  const currentUserForm = userInfoForm.getUserInfo();
-  nameInput.value = currentUserForm.username;
-  jobInput.value = currentUserForm.job;
+  const currentUserForm = userInfoForm.getUserInfo();   
+  nameInput.value = currentUserForm.name;
+  aboutInput.value = currentUserForm.about;
 
   popupUserInfo.openPopup();
 
@@ -94,4 +125,17 @@ addButton.addEventListener('click', function () {
 
 addPostForm.setEventListeners();
 
-section.render();
+api.getUserInfoApi()
+  .then(data => {
+    userInfoForm.setUserInfo(data.name, data.about);
+  })
+  .catch(err => console.log(err));
+
+api.getCards()
+  .then(cards => {
+    section.render(cards);
+  })
+  .catch(err => console.log(err));
+
+
+

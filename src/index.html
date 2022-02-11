@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 <body class="page">
   <header class="header">
-    <img src="<%=require('./images/logo-mesto.svg')%>" alt="Логотип 'Место'" class="logo">
+    <img src='./images/logo-mesto.svg' alt="Логотип 'Место'" class="logo">
+    <!-- <img src="<%=require('./images/logo-mesto.svg')%>" alt="Логотип 'Место'" class="logo"> -->
   </header>
 
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
+      <img src='./images/Avatar.jpg' alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
+      <!-- <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo"> -->
       <div class="profile__main">
-        <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
+        <h1 class="profile__title"></h1>
         <button class="profile__edit-button" type="button"></button>
       </div>
-      <p class="profile__subtitle">Исследователь океана</p>
+      <p class="profile__subtitle"></p>
       <button class="profile__add-button" type="button"></button>
     </section>
 
@@ -85,6 +87,6 @@
     </article>
   </template>
 
-  <!-- <script type="module" src="./pages/index.js"></script> -->
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
