@@ -1,6 +1,5 @@
 // import '../pages/index.css';
 import { 
-  // initialCards, 
   editLink, 
   profileForm, 
   addButton, 
@@ -56,8 +55,16 @@ const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector,
 const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector});
 
 // Popups
-const popupUserInfo = new PopupWithForm(popupEditProfileSelector, profileFormSelector, (inputs) => {
-  userInfoForm.setUserInfo(inputs[nameInput.name], inputs[aboutInput.name]);
+const popupUserInfo = new PopupWithForm(
+  popupEditProfileSelector,
+  profileFormSelector,
+  () => {
+    const inputs = {
+      name: nameInput.value,
+      about: aboutInput.value
+    }
+    userInfoForm.setUserInfo(inputs.name, inputs.about);
+    api.updateUserInfo(inputs);
 });
 
 popupUserInfo.setEventListeners();

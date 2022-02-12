@@ -22,7 +22,7 @@ export class Api {
   }
 
   // Update User Info
-  updateUserInfo(name, about) {
+  updateUserInfo(data) {
     return fetch(`${this._adress}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -30,8 +30,8 @@ export class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name,
-        about
+        name: data.name,
+        about: data.about
       })
     })
     .then(this._handleResponse);
@@ -45,6 +45,5 @@ export class Api {
       }
     })
     .then(this._handleResponse);
-
   }
 }
