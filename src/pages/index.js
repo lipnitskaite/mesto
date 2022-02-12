@@ -63,8 +63,12 @@ const popupUserInfo = new PopupWithForm(
       name: nameInput.value,
       about: aboutInput.value
     }
-    userInfoForm.setUserInfo(inputs.name, inputs.about);
-    api.updateUserInfo(inputs);
+    // userInfoForm.setUserInfo(inputs.name, inputs.about);
+    api.updateUserInfo(inputs)
+    .then(result => {
+      userInfoForm.setUserInfo(result.name, result.about);
+    })
+    .catch(err => console.log(`Ошибка при изменении информации: ${err}`))
 });
 
 popupUserInfo.setEventListeners();
