@@ -11,7 +11,7 @@ export class Api {
       return Promise.reject(`Ошибка: ${res.status}`)
   };
 
-  // Return User Info
+  // User Info
   getUserInfoApi() {
     return fetch(`${this._adress}/users/me`, {
       headers: {
@@ -21,7 +21,6 @@ export class Api {
     .then(this._handleResponse);
   }
 
-  // Update User Info
   updateUserInfo(data) {
     return fetch(`${this._adress}/users/me`, {
       method: 'PATCH',
@@ -37,12 +36,27 @@ export class Api {
     .then(this._handleResponse);
   }
 
-  // Return Cards
+  // Cards
   getCards() {
     return fetch(`${this._adress}/cards`, {
       headers: {
         authorization: this._token
       }
+    })
+    .then(this._handleResponse);
+  }
+
+  addCard(data) {
+    return fetch(`${this._adress}/cards`, {
+      method: 'POST',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      })
     })
     .then(this._handleResponse);
   }

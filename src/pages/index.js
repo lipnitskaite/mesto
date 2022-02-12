@@ -41,13 +41,20 @@ const section = new Section({
 );
 
 // AddPost Form
-const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector, () => {
-  const inputPostTitle = postTitle.value;
-  const inputPostImage = postImage.value;
+const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector, 
+  () => {
+  const inputsNewPost = {
+    name: postTitle.value,
+    link: postImage.value
+  }
 
-  const cardElement = getItem({name: inputPostTitle, imageSource: inputPostImage});
+  api.addCard(inputsNewPost)
+  .then((result) => {
+    const cardElement = getItem(result);
 
-  section.addItem(cardElement);
+    section.addItem(cardElement);
+  })
+  .catch(err => console.log(`Ошибка при создании карточки: ${err}`))
 }
 );
 
@@ -63,7 +70,6 @@ const popupUserInfo = new PopupWithForm(
       name: nameInput.value,
       about: aboutInput.value
     }
-    // userInfoForm.setUserInfo(inputs.name, inputs.about);
     api.updateUserInfo(inputs)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about);
