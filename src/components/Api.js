@@ -1,6 +1,6 @@
 export class Api {
-  constructor({adress, token}) {
-    this._adress = adress;
+  constructor({address, token}) {
+    this._address = address;
     this._token = token;
   }
 
@@ -13,7 +13,7 @@ export class Api {
 
   // User Info
   getUserInfoApi() {
-    return fetch(`${this._adress}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       headers: {
         authorization: this._token
       }
@@ -22,7 +22,7 @@ export class Api {
   }
 
   updateUserInfo(data) {
-    return fetch(`${this._adress}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
       headers: {
         authorization: this._token,
@@ -38,7 +38,7 @@ export class Api {
 
   // Cards
   getCards() {
-    return fetch(`${this._adress}/cards`, {
+    return fetch(`${this._address}/cards`, {
       headers: {
         authorization: this._token
       }
@@ -47,7 +47,7 @@ export class Api {
   }
 
   addCard(data) {
-    return fetch(`${this._adress}/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: 'POST',
       headers: {
         authorization: this._token,
@@ -60,4 +60,15 @@ export class Api {
     })
     .then(this._handleResponse);
   }
+
+  deleteCard(id) {
+    return fetch(`${this._address}/cards/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(this._handleResponse)
+}
+
 }

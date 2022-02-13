@@ -15,7 +15,9 @@ import {
   profileTitleSelector,
   profileSubtitleSelector, 
   nameInput, 
-  aboutInput 
+  aboutInput,
+  popupDeletePostSelector, 
+  deleteCardFormSelector
 } from '../utils/constants.js';
 
 import {Api} from '../components/Api.js';
@@ -26,9 +28,42 @@ import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 
+let currentUserId = '';
+
+// Render cards with pictures
+function getItem(item) {
+  const card = new Card({
+    name: item.name, 
+    imageSource: item.link,
+    cardId: item._id,
+    // ownerId: item.owner._id,
+    // userId: item._id,
+    handleCardClick: () => {
+      popupWithImage.openPopup({name: item.name, imageSource: item.link});
+    },
+    hideDeleteButton: item.owner._id != currentUserId,
+    handleDeleteButtonClick: () => {
+      const deletePostForm = new PopupWithForm(popupDeletePostSelector, deleteCardFormSelector, 
+        () => {
+        api.deleteCard(card.getId())
+          .then(() => card.removeCard())
+          .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
+      }
+      );
+      deletePostForm.openPopup();
+
+      deletePostForm.setEventListeners();
+  }
+  }, '.template');
+
+  const cardElement = card.generateCard();
+
+  return cardElement;
+}
+
 // Api
 const api = new Api({
-  adress: 'https://mesto.nomoreparties.co/v1/cohort-35',
+  address: 'https://mesto.nomoreparties.co/v1/cohort-35',
   token: '5ac1d86f-37b5-4f50-b37e-b1e98dd53da9'
 });
 
@@ -51,6 +86,8 @@ const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector,
   api.addCard(inputsNewPost)
   .then((result) => {
     const cardElement = getItem(result);
+
+    console.log(result);
 
     section.addItem(cardElement);
   })
@@ -108,18 +145,6 @@ const enableValidation = (config) => {
 
 enableValidation(config);
 
-// Render cards with pictures
-function getItem(item) {
-  const handleCardClick = () => {
-    popupWithImage.openPopup({name: item.name, imageSource: item.link});
-  }
-
-  const card = new Card({name: item.name, imageSource: item.link}, '.template', handleCardClick);
-  const cardElement = card.generateCard();
-
-  return cardElement;
-}
-
 popupWithImage.setEventListeners();
 
 // Open popupEditProfile
@@ -145,6 +170,8 @@ addPostForm.setEventListeners();
 api.getUserInfoApi()
   .then(data => {
     userInfoForm.setUserInfo(data.name, data.about);
+
+    currentUserId = data._id;
   })
   .catch(err => console.log(err));
 
