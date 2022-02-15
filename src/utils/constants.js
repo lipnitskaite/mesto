@@ -13,14 +13,20 @@ export const captionPopup = popupImageItem.querySelector('.popup__caption');
 export const editLink = document.querySelector('.profile__edit-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupEditProfileSelector = '.popup_type_edit-profile';
+export const editAvatarLink = document.querySelector('.profile__photo-edit-button');
+export const popupEditAvatarSelector = '.popup_type_edit-avatar';
 export const profileForm = document.querySelector('.form_type_edit');
 export const profileFormSelector = '.form_type_edit';
+export const avatarForm = document.querySelector('.form_type_edit-avatar');
+export const avatarFormSelector = '.form_type_edit-avatar';
 export const nameInput = document.querySelector('.form__input_type_name');
 export const aboutInput = document.querySelector('.form__input_type_job');
+export const avatarInput = document.querySelector('.form__input_type_avatar');
 export const profileTitle = document.querySelector('.profile__title');
 export const profileTitleSelector = '.profile__title';
 export const profileSubtitle = document.querySelector('.profile__subtitle');
 export const profileSubtitleSelector = '.profile__subtitle';
+export const profileAvatarSelector = '.profile__photo';
 
 // Add post form
 export const addCardForm = document.querySelector('.form_type_add');

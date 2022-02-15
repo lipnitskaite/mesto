@@ -8,14 +8,20 @@ import {
   cardsContainerSelector, 
   postTitle, 
   postImage, 
-  popupEditProfileSelector, 
-  profileFormSelector, 
+  popupEditProfileSelector,
+  editAvatarLink,
+  popupEditAvatarSelector,
+  profileFormSelector,
+  avatarForm,
+  avatarFormSelector,
   popupWithImageSelector, 
   popupAddPostSelector, 
   profileTitleSelector,
-  profileSubtitleSelector, 
+  profileSubtitleSelector,
+  profileAvatarSelector,
   nameInput, 
   aboutInput,
+  avatarInput,
   popupDeletePostSelector, 
   deleteCardFormSelector
 } from '../utils/constants.js';
@@ -36,8 +42,6 @@ function getItem(item) {
     name: item.name, 
     imageSource: item.link,
     cardId: item._id,
-    // ownerId: item.owner._id,
-    // userId: item._id,
     handleCardClick: () => {
       popupWithImage.openPopup({name: item.name, imageSource: item.link});
     },
@@ -96,9 +100,9 @@ const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector,
 );
 
 // UserInfo Form
-const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector});
+const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector, profileAvatarSelector});
 
-// Popups
+// Popup Edit Profile
 const popupUserInfo = new PopupWithForm(
   popupEditProfileSelector,
   profileFormSelector,
@@ -109,12 +113,29 @@ const popupUserInfo = new PopupWithForm(
     }
     api.updateUserInfo(inputs)
     .then(result => {
-      userInfoForm.setUserInfo(result.name, result.about);
+      userInfoForm.setUserInfo(result.name, result.about, result.avatar);
     })
     .catch(err => console.log(`Ошибка при изменении информации: ${err}`))
 });
 
 popupUserInfo.setEventListeners();
+
+// Popup Edit Avatar
+const popupAvatar = new PopupWithForm(
+  popupEditAvatarSelector,
+  avatarFormSelector,
+  () => {
+    const newAvatarInput = avatarInput.value;
+
+    api.updateUserAvatar(newAvatarInput)
+    .then(result => {
+      userInfoForm.setUserInfo(result.name, result.about, result.avatar);
+      // profilePhoto.src = result;
+    })
+    .catch(err => console.log(`Ошибка при изменении аватара: ${err}`))
+});
+
+popupAvatar.setEventListeners();
 
 // Popup With Image
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
@@ -158,6 +179,13 @@ editLink.addEventListener('click', function () {
   formValidators[ profileForm.getAttribute('name') ].resetValidation();
 });
 
+// Open Popup Edit Profile Avatar
+editAvatarLink.addEventListener('click', function () {
+  popupAvatar.openPopup();
+
+  formValidators[ avatarForm.getAttribute('name') ].resetValidation();
+});
+
 // Open popupAddPost
 addButton.addEventListener('click', function () {
   addPostForm.openPopup();
@@ -168,10 +196,11 @@ addButton.addEventListener('click', function () {
 addPostForm.setEventListeners();
 
 api.getUserInfoApi()
-  .then(data => {
-    userInfoForm.setUserInfo(data.name, data.about);
+  .then(result => {
+    console.log(result);
+    userInfoForm.setUserInfo(result.name, result.about, result.avatar);
 
-    currentUserId = data._id;
+    currentUserId = result._id;
   })
   .catch(err => console.log(err));
 

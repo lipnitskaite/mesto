@@ -69,6 +69,21 @@ export class Api {
       }
     })
     .then(this._handleResponse)
-}
+  }
+
+  // User Avatar
+  updateUserAvatar(avatarLink) {
+    return fetch(`${this._address}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: avatarLink,
+      })
+    })
+    .then(this._handleResponse);
+  }
 
 }

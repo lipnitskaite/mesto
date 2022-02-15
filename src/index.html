@@ -15,8 +15,7 @@
   <main class="content">
     <section class="profile">
         <div class="profile__photo-container">
-          <img src='./images/Avatar.jpg' alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
-          <!-- <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo"> -->
+          <img src='#' class="profile__photo">
           <button class="profile__photo-edit-button" type="button"></button>
         </div>
       </div>
@@ -55,7 +54,7 @@
       <form class="form form_type_edit-avatar" name="edit_avatar" novalidate>
         <h2 class="form__title">Обновить аватар</h2>
         <fieldset class="form__container">
-          <input id="avatar-input" class="form__input form__input_type_avatar" type="text" name="avatar" value="" required minlength="2" maxlength="40">
+          <input id="avatar-input" class="form__input form__input_type_avatar" type="url" name="avatar" placeholder="Ссылка на картинку" value="" required>
           <span class="avatar-input-error form__input-error"></span>
         </fieldset>
         <button class="form__button form__button_type_submit-changes" type="submit" name="submit" value="Сохранить">Сохранить</button>
