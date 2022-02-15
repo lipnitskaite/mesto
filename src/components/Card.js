@@ -1,8 +1,8 @@
 export class Card {
-  constructor({ name, imageSource, imageAlt, cardId, handleCardClick, hideDeleteButton, handleDeleteButtonClick }, cardSelector) {
+  constructor({ name, imageSource, likeQuantity, cardId, handleCardClick, hideDeleteButton, handleDeleteButtonClick }, cardSelector) {
     this._name = name;
     this._imageSource = imageSource;
-    this._imageAlt = imageAlt;
+    this._likeQuantity = likeQuantity;
     this._cardId = cardId;
     this._handleCardClick = handleCardClick;
     this._hideDeleteButton = hideDeleteButton;
@@ -24,11 +24,12 @@ export class Card {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.place__image');
     this._likeButton = this._element.querySelector('.place__like-button');
+    this._likeNumber = this._element.querySelector('.place__like-number');
     this._deleteButton = this._element.querySelector('.place__delete-button');
     this._setEventListeners();
   
     this._cardImage.src = this._imageSource;
-    this._cardImage.alt = this._imageAlt;
+    this._likeNumber.textContent = this._likeQuantity;
     this._element.querySelector('.place__title').textContent = this._name;
 
     if (this._hideDeleteButton) {

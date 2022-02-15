@@ -37,6 +37,9 @@ export const popupAddPostSelector = '.popup_type_add-post';
 export const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
 export const postImage = popupAddPost.querySelector('.form__input_type_post-image');
 
+// Place
+// export const postImage = popupAddPost.querySelector('.place__like-number');
+
 // Delete Card Popup
 export const deleteButton = document.querySelectorAll('.place__delete-button');
 export const popupDeletePostSelector = '.popup_type_delete-post';

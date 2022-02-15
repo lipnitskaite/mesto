@@ -41,6 +41,7 @@ function getItem(item) {
   const card = new Card({
     name: item.name, 
     imageSource: item.link,
+    likeQuantity: item.likes.length,
     cardId: item._id,
     handleCardClick: () => {
       popupWithImage.openPopup({name: item.name, imageSource: item.link});
