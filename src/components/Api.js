@@ -85,5 +85,26 @@ export class Api {
     })
     .then(this._handleResponse);
   }
+  
+  // Handle Put Like
+  likeCard(id) {
+    return fetch(`${this._address}/cards/${id}/likes`, {
+      method: 'PUT',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(this._handleResponse)
+  }
 
+  removeLikeCard(id) {
+    return fetch(`${this._address}/cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(this._handleResponse)
+  }
 }

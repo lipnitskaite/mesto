@@ -11,9 +11,11 @@ export const captionPopup = popupImageItem.querySelector('.popup__caption');
 
 // Edit profile form
 export const editLink = document.querySelector('.profile__edit-button');
+export const editProfileSubmit = document.querySelector('.form__button_type_submit-changes');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupEditProfileSelector = '.popup_type_edit-profile';
 export const editAvatarLink = document.querySelector('.profile__photo-edit-button');
+export const editAvatarSubmit = document.querySelector('.form__button_type_submit-avatar');
 export const popupEditAvatarSelector = '.popup_type_edit-avatar';
 export const profileForm = document.querySelector('.form_type_edit');
 export const profileFormSelector = '.form_type_edit';
@@ -36,6 +38,7 @@ export const popupAddPost = document.querySelector('.popup_type_add-post');
 export const popupAddPostSelector = '.popup_type_add-post';
 export const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
 export const postImage = popupAddPost.querySelector('.form__input_type_post-image');
+export const addPostSubmit = popupAddPost.querySelector('.form__button_type_submit-new-post');
 
 // Place
 // export const postImage = popupAddPost.querySelector('.place__like-number');
