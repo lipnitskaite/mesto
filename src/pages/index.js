@@ -1,4 +1,4 @@
-// import '../pages/index.css';
+import '../pages/index.css';
 import { 
   editLink,
   editProfileSubmit, 
@@ -65,7 +65,7 @@ function getItem(item) {
 
       deletePostForm.setEventListeners();
     }, 
-    
+
     handleLike: (active) => {
       if (active) {
         api.likeCard(card.getId())
