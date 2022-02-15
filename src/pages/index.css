@@ -12,6 +12,8 @@
 
 /* Profile Block */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__photo-container/profile__photo-container.css);
+@import url(../blocks/profile/__photo-edit-button/profile__photo-edit-button.css);
 @import url(../blocks/profile/__photo/profile__photo.css);
 @import url(../blocks/profile/__main/profile__main.css);
 @import url(../blocks/profile/__title/profile__title.css);

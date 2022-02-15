@@ -14,8 +14,12 @@
 
   <main class="content">
     <section class="profile">
-      <img src='./images/Avatar.jpg' alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
-      <!-- <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo"> -->
+        <div class="profile__photo-container">
+          <img src='./images/Avatar.jpg' alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo">
+          <!-- <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак-Ив Кусто в красной шапке на фоне океана" class="profile__photo"> -->
+          <button class="profile__photo-edit-button" type="button"></button>
+        </div>
+      </div>
       <div class="profile__main">
         <h1 class="profile__title"></h1>
         <button class="profile__edit-button" type="button"></button>
@@ -38,6 +42,21 @@
           <span class="name-input-error form__input-error"></span>
           <input id="job-input" class="form__input form__input_type_job" type="text" name="userdescription" value="" required minlength="2" maxlength="200">
           <span class="job-input-error form__input-error"></span>
+        </fieldset>
+        <button class="form__button form__button_type_submit-changes" type="submit" name="submit" value="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_edit-avatar">
+    <div class="popup__overlay"></div>
+    <div class="popup__content">
+      <button class="popup__close" type="button"></button>
+      <form class="form form_type_edit-avatar" name="edit_avatar" novalidate>
+        <h2 class="form__title">Обновить аватар</h2>
+        <fieldset class="form__container">
+          <input id="avatar-input" class="form__input form__input_type_avatar" type="text" name="avatar" value="" required minlength="2" maxlength="40">
+          <span class="avatar-input-error form__input-error"></span>
         </fieldset>
         <button class="form__button form__button_type_submit-changes" type="submit" name="submit" value="Сохранить">Сохранить</button>
       </form>
