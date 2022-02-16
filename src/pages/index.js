@@ -1,4 +1,4 @@
-import '../pages/index.css';
+// import '../pages/index.css';
 import { 
   editLink,
   editProfileSubmit, 
@@ -35,6 +35,7 @@ import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
+import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
 import {UserInfo} from '../components/UserInfo.js';
 
 let currentUserId = '';
@@ -54,16 +55,17 @@ function getItem(item) {
     hideDeleteButton: item.owner._id != currentUserId,
 
     handleDeleteButtonClick: () => {
-      const deletePostForm = new PopupWithForm(popupDeletePostSelector, deleteCardFormSelector, 
-        () => {
-        api.deleteCard(card.getId())
-          .then(() => card.removeCard())
-          .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
-      }
-      );
-      deletePostForm.openPopup();
+      // const deletePostForm = new PopupWithForm(popupDeletePostSelector, deleteCardFormSelector, 
+      //   () => {
+      //   api.deleteCard(card.getId())
+      //     .then(() => card.removeCard())
+      //     .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
+      // }
+      // );
+      // deletePostForm.openPopup();
+      deleteCardPopup.openPopup();
 
-      deletePostForm.setEventListeners();
+      // deletePostForm.setEventListeners();
     }, 
 
     handleLike: (active) => {
@@ -119,14 +121,27 @@ const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector,
   .then((result) => {
     const cardElement = getItem(result);
 
-    console.log(result);
+    // console.log(result);
 
     section.addItem(cardElement);
+
+    addPostForm.closePopup();
   })
   .catch(err => console.log(`Ошибка при создании карточки: ${err}`))
   .finally(renderLoading(addPostSubmit, false))
 }
 );
+
+// Delete Card Confirmation
+const deleteCardPopup = new PopupWithConfirmation(popupDeletePostSelector, deleteCardFormSelector, 
+  () => {
+  api.deleteCard(card.getId())
+    .then(() => card.removeCard())
+    .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
+}
+);
+
+deleteCardPopup.setEventListeners();
 
 // UserInfo Form
 const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector, profileAvatarSelector});
@@ -145,6 +160,8 @@ const popupUserInfo = new PopupWithForm(
     api.updateUserInfo(inputs)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about, result.avatar);
+
+      popupUserInfo.closePopup();
     })
     .catch(err => console.log(`Ошибка при изменении информации: ${err}`))
     .finally(renderLoading(editProfileSubmit, false))
@@ -163,7 +180,8 @@ const popupAvatar = new PopupWithForm(
     api.updateUserAvatar(newAvatarInput)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about, result.avatar);
-      // profilePhoto.src = result;
+      
+      popupAvatar.closePopup();
     })
     .catch(err => console.log(`Ошибка при изменении аватара: ${err}`))
     .finally(renderLoading(editAvatarSubmit, false))
@@ -229,20 +247,17 @@ addButton.addEventListener('click', function () {
 
 addPostForm.setEventListeners();
 
-api.getUserInfoApi()
-  .then(result => {
-    console.log(result);
-    userInfoForm.setUserInfo(result.name, result.about, result.avatar);
+// Handle User Info and Cards rendering
+Promise.all([api.getUserInfoApi(), api.getCards()])
+.then(([userData, cards]) => {
+    userInfoForm.setUserInfo(userData.name, userData.about, userData.avatar);
 
-    currentUserId = result._id;
-  })
-  .catch(err => console.log(err));
+    currentUserId = userData._id;
 
-api.getCards()
-  .then(cards => {
     section.render(cards);
-  })
-  .catch(err => console.log(err));
+})
+.catch(err => console.log(err));
+
 
 
 
