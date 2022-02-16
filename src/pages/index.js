@@ -7,9 +7,7 @@ import {
   addCardForm, 
   addCardFormSelector,
   addPostSubmit,
-  cardsContainerSelector, 
-  postTitle, 
-  postImage, 
+  cardsContainerSelector,  
   popupEditProfileSelector,
   editAvatarLink,
   editAvatarSubmit,
@@ -24,7 +22,6 @@ import {
   profileAvatarSelector,
   nameInput, 
   aboutInput,
-  avatarInput,
   popupDeletePostSelector, 
   deleteCardFormSelector
 } from '../utils/constants.js';
@@ -54,7 +51,7 @@ function getItem(item) {
 
     hideDeleteButton: item.owner._id != currentUserId,
 
-    handleDeleteButtonClick: () => {
+    handleDeleteButtonClick: (item) => {
       // const deletePostForm = new PopupWithForm(popupDeletePostSelector, deleteCardFormSelector, 
       //   () => {
       //   api.deleteCard(card.getId())
@@ -63,7 +60,7 @@ function getItem(item) {
       // }
       // );
       // deletePostForm.openPopup();
-      deleteCardPopup.openPopup();
+      deleteCardPopup.openPopup(item);
 
       // deletePostForm.setEventListeners();
     }, 
@@ -109,34 +106,32 @@ function renderLoading(buttonClass, isLoading) {
 }
 
 // AddPost Form
-const addPostForm = new PopupWithForm(popupAddPostSelector, addCardFormSelector, 
-  () => {
-  const inputsNewPost = {
-    name: postTitle.value,
-    link: postImage.value
+const addPostForm = new PopupWithForm(
+  popupAddPostSelector,
+  addCardFormSelector,
+  
+  // handleFormSubmit
+  (newPostData) => {
+    renderLoading(addPostSubmit, true);
+
+    api.addCard(newPostData)
+    .then((result) => {
+      const cardElement = getItem(result);
+
+      section.addItem(cardElement);
+
+      addPostForm.closePopup();
+    })
+    .catch(err => console.log(`Ошибка при создании карточки: ${err}`))
+    .finally(renderLoading(addPostSubmit, false))
   }
-
-  renderLoading(addPostSubmit, true);
-  api.addCard(inputsNewPost)
-  .then((result) => {
-    const cardElement = getItem(result);
-
-    // console.log(result);
-
-    section.addItem(cardElement);
-
-    addPostForm.closePopup();
-  })
-  .catch(err => console.log(`Ошибка при создании карточки: ${err}`))
-  .finally(renderLoading(addPostSubmit, false))
-}
 );
 
 // Delete Card Confirmation
 const deleteCardPopup = new PopupWithConfirmation(popupDeletePostSelector, deleteCardFormSelector, 
-  () => {
-  api.deleteCard(card.getId())
-    .then(() => card.removeCard())
+  (item) => {
+  api.deleteCard(item.getId())
+    .then(() => item.removeCard())
     .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
 }
 );
@@ -150,14 +145,10 @@ const userInfoForm = new UserInfo({profileTitleSelector, profileSubtitleSelector
 const popupUserInfo = new PopupWithForm(
   popupEditProfileSelector,
   profileFormSelector,
-  () => {
-    const inputs = {
-      name: nameInput.value,
-      about: aboutInput.value
-    }
-
+  (newUserData) => {
     renderLoading(editProfileSubmit, true);
-    api.updateUserInfo(inputs)
+
+    api.updateUserInfo(newUserData)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about, result.avatar);
 
@@ -173,14 +164,14 @@ popupUserInfo.setEventListeners();
 const popupAvatar = new PopupWithForm(
   popupEditAvatarSelector,
   avatarFormSelector,
-  () => {
-    const newAvatarInput = avatarInput.value;
+  (newAvatarData) => {
+    // const newAvatarInput = avatarInput.value;
 
-    renderLoading(editAvatarSubmit, true);
-    api.updateUserAvatar(newAvatarInput)
+    api.updateUserAvatar(newAvatarData)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about, result.avatar);
       
+      renderLoading(editAvatarSubmit, true);
       popupAvatar.closePopup();
     })
     .catch(err => console.log(`Ошибка при изменении аватара: ${err}`))
