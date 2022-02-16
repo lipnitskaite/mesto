@@ -50,14 +50,22 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener('click', this._toggleLike);
+    this._likeButton.addEventListener('click', this._handleLike);
     this._element.querySelector('.place__delete-button').addEventListener('click', this._handleDeleteButtonClick);
     this._cardImage.addEventListener('click', this._handleCardClick);
   }
 
-  _toggleLike = () => {
-    const active = this._likeButton.classList.toggle('place__like-button_active');
-    this._handleLike(active);
+  // _toggleLike = () => {
+  //   const active = this._likeButton.classList.toggle('place__like-button_active');
+  //   this._handleLike(active);
+  // }
+
+  getLikeStatus() {
+    return this._likeButton.classList.contains('place__like-button_active');
+  }
+
+  toggleLike() {
+    this._likeButton.classList.toggle('place__like-button_active');
   }
 
   addLikeQuantity(delta) {

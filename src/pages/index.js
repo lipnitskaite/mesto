@@ -65,19 +65,34 @@ function getItem(item) {
       deleteCardPopup.openPopup(item);
     }, 
 
-    handleLike: (active) => {
+    handleLike: () => {
+      const active = card.getLikeStatus();
+
       if (active) {
-        api.likeCard(card.getId())
-        .then(() => card.addLikeQuantity(1))
-      } else {
         api.removeLikeCard(card.getId())
-        .then(() => card.addLikeQuantity(-1))
+        .then(() => {
+          card.addLikeQuantity(-1)
+          card.toggleLike();
+        })
+      } else {
+        api.likeCard(card.getId())
+        .then(() => {
+          card.addLikeQuantity(1)
+          card.toggleLike();
+        })
       }
     },
   }, 
     '.template');
 
   const cardElement = card.generateCard();
+
+  // Handle likes toggle
+  item.likes.forEach((like) => {
+    if(like._id == currentUserId) {
+      card.toggleLike();
+    }
+  })
 
   return cardElement;
 }
