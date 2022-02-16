@@ -52,17 +52,17 @@ function getItem(item) {
     hideDeleteButton: item.owner._id != currentUserId,
 
     handleDeleteButtonClick: (item) => {
-      // const deletePostForm = new PopupWithForm(popupDeletePostSelector, deleteCardFormSelector, 
-      //   () => {
-      //   api.deleteCard(card.getId())
-      //     .then(() => card.removeCard())
-      //     .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
-      // }
-      // );
-      // deletePostForm.openPopup();
-      deleteCardPopup.openPopup(item);
+      deleteCardPopup.setSubmitAction(() => {
+        api.deleteCard(card.getId())
+        .then(() => {
+          card.removeCard()
 
-      // deletePostForm.setEventListeners();
+          deleteCardPopup.closePopup();
+        })
+        .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
+      });
+
+      deleteCardPopup.openPopup(item);
     }, 
 
     handleLike: (active) => {
@@ -128,13 +128,7 @@ const addPostForm = new PopupWithForm(
 );
 
 // Delete Card Confirmation
-const deleteCardPopup = new PopupWithConfirmation(popupDeletePostSelector, deleteCardFormSelector, 
-  (item) => {
-  api.deleteCard(item.getId())
-    .then(() => item.removeCard())
-    .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
-}
-);
+const deleteCardPopup = new PopupWithConfirmation(popupDeletePostSelector);
 
 deleteCardPopup.setEventListeners();
 
@@ -165,9 +159,7 @@ const popupAvatar = new PopupWithForm(
   popupEditAvatarSelector,
   avatarFormSelector,
   (newAvatarData) => {
-    // const newAvatarInput = avatarInput.value;
-
-    api.updateUserAvatar(newAvatarData)
+    api.updateUserAvatar(newAvatarData.avatar)
     .then(result => {
       userInfoForm.setUserInfo(result.name, result.about, result.avatar);
       
