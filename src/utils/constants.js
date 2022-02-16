@@ -23,7 +23,6 @@ export const avatarForm = document.querySelector('.form_type_edit-avatar');
 export const avatarFormSelector = '.form_type_edit-avatar';
 export const nameInput = document.querySelector('.form__input_type_name');
 export const aboutInput = document.querySelector('.form__input_type_job');
-export const avatarInput = document.querySelector('.form__input_type_avatar');
 export const profileTitle = document.querySelector('.profile__title');
 export const profileTitleSelector = '.profile__title';
 export const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -36,8 +35,6 @@ export const addCardFormSelector = '.form_type_add';
 export const addButton = document.querySelector('.profile__add-button');
 export const popupAddPost = document.querySelector('.popup_type_add-post');
 export const popupAddPostSelector = '.popup_type_add-post';
-export const postTitle = popupAddPost.querySelector('.form__input_type_post-title');
-export const postImage = popupAddPost.querySelector('.form__input_type_post-image');
 export const addPostSubmit = popupAddPost.querySelector('.form__button_type_submit-new-post');
 
 // Place
