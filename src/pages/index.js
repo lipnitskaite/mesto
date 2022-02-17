@@ -1,4 +1,4 @@
-import '../pages/index.css';
+// import '../pages/index.css';
 import { 
   editLink,
   editProfileSubmit, 
@@ -138,7 +138,6 @@ const addPostForm = new PopupWithForm(
       addPostForm.closePopup();
     })
     .catch(err => console.log(`Ошибка при создании карточки: ${err}`))
-    .finally(renderLoading(addPostSubmit, false))
   }
 );
 
@@ -164,7 +163,6 @@ const popupUserInfo = new PopupWithForm(
       popupUserInfo.closePopup();
     })
     .catch(err => console.log(`Ошибка при изменении информации: ${err}`))
-    .finally(renderLoading(editProfileSubmit, false))
 });
 
 popupUserInfo.setEventListeners();
@@ -182,7 +180,6 @@ const popupAvatar = new PopupWithForm(
       popupAvatar.closePopup();
     })
     .catch(err => console.log(`Ошибка при изменении аватара: ${err}`))
-    .finally(renderLoading(editAvatarSubmit, false))
 });
 
 popupAvatar.setEventListeners();
@@ -224,6 +221,8 @@ editLink.addEventListener('click', function () {
   nameInput.value = currentUserForm.name;
   aboutInput.value = currentUserForm.about;
 
+  renderLoading(editProfileSubmit, false);
+
   popupUserInfo.openPopup();
 
   formValidators[ profileForm.getAttribute('name') ].resetValidation();
@@ -231,6 +230,8 @@ editLink.addEventListener('click', function () {
 
 // Open Popup Edit Profile Avatar
 editAvatarLink.addEventListener('click', function () {
+  renderLoading(editAvatarSubmit, false);
+
   popupAvatar.openPopup();
 
   formValidators[ avatarForm.getAttribute('name') ].resetValidation();
@@ -238,6 +239,8 @@ editAvatarLink.addEventListener('click', function () {
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
+  renderLoading(addPostSubmit, false);
+  
   addPostForm.openPopup();
 
   formValidators[ addCardForm.getAttribute('name') ].resetValidation();
