@@ -4,43 +4,40 @@ export const popups = document.querySelectorAll('.popup');
 export const popupSelector = '.popup';
 
 // Image Popup
-export const popupImageItem = document.querySelector('.popup_type_image');
+export const popupWithImage = document.querySelector('.popup_type_image');
 export const popupWithImageSelector = '.popup_type_image';
-export const imagePopup = popupImageItem.querySelector('.popup__image');
-export const captionPopup = popupImageItem.querySelector('.popup__caption');
+export const imagePopup = popupWithImage.querySelector('.popup__image');
+export const captionPopup = popupWithImage.querySelector('.popup__caption');
 
 // Edit profile form
-export const editLink = document.querySelector('.profile__edit-button');
-export const editProfileSubmit = document.querySelector('.form__button_type_submit-changes');
-export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-export const popupEditProfileSelector = '.popup_type_edit-profile';
-export const editAvatarLink = document.querySelector('.profile__photo-edit-button');
+export const editUserInfoButton = document.querySelector('.profile__edit-button');
+export const editUserInfoSubmit = document.querySelector('.form__button_type_submit-changes');
+export const popupEditUserInfo = document.querySelector('.popup_type_edit-profile');
+export const popupEditUserInfoSelector = '.popup_type_edit-profile';
+export const editAvatarButton = document.querySelector('.profile__photo-edit-button');
 export const editAvatarSubmit = document.querySelector('.form__button_type_submit-avatar');
 export const popupEditAvatarSelector = '.popup_type_edit-avatar';
-export const profileForm = document.querySelector('.form_type_edit');
-export const profileFormSelector = '.form_type_edit';
-export const avatarForm = document.querySelector('.form_type_edit-avatar');
-export const avatarFormSelector = '.form_type_edit-avatar';
+export const editProfileInfoForm = document.querySelector('.form_type_edit');
+export const editProfileInfoFormSelector = '.form_type_edit';
+export const editAvatarForm = document.querySelector('.form_type_edit-avatar');
+export const editAvatarFormSelector = '.form_type_edit-avatar';
 export const nameInput = document.querySelector('.form__input_type_name');
 export const aboutInput = document.querySelector('.form__input_type_job');
-export const profileTitle = document.querySelector('.profile__title');
-export const profileTitleSelector = '.profile__title';
-export const profileSubtitle = document.querySelector('.profile__subtitle');
-export const profileSubtitleSelector = '.profile__subtitle';
-export const profileAvatarSelector = '.profile__photo';
+export const UserInfoTitle = document.querySelector('.profile__title');
+export const UserInfoTitleSelector = '.profile__title';
+export const UserInfoSubtitle = document.querySelector('.profile__subtitle');
+export const UserInfoSubtitleSelector = '.profile__subtitle';
+export const AvatarSelector = '.profile__photo';
 
 // Add post form
 export const addCardForm = document.querySelector('.form_type_add');
 export const addCardFormSelector = '.form_type_add';
-export const addButton = document.querySelector('.profile__add-button');
-export const popupAddPost = document.querySelector('.popup_type_add-post');
-export const popupAddPostSelector = '.popup_type_add-post';
-export const addPostSubmit = popupAddPost.querySelector('.form__button_type_submit-new-post');
-
-// Place
-// export const postImage = popupAddPost.querySelector('.place__like-number');
+export const addCardButton = document.querySelector('.profile__add-button');
+export const popupAddCard = document.querySelector('.popup_type_add-post');
+export const popupAddCardSelector = '.popup_type_add-post';
+export const addCardSubmit = popupAddCard.querySelector('.form__button_type_submit-new-post');
 
 // Delete Card Popup
-export const deleteButton = document.querySelectorAll('.place__delete-button');
-export const popupDeletePostSelector = '.popup_type_delete-post';
+export const deleteCardButton = document.querySelectorAll('.place__delete-button');
+export const popupDeleteCardSelector = '.popup_type_delete-post';
 export const deleteCardFormSelector = '.form_type_delete';
